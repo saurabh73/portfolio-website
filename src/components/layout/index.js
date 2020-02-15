@@ -41,9 +41,6 @@ const Layout = ({ children }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
-
-Layout.propTypes = {
   siteTitle: PropTypes.string,
 }
 
