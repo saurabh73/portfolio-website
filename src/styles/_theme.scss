@@ -1,0 +1,21 @@
+$themes: (
+  light: (
+    backgroundColor: #F5F6F7,
+    contentBackgroundColor: #FFFFFF,
+    headerTextColor: #44566C,
+    contentTextColor: #44566C
+  ),
+  dark: (
+    backgroundColor: #272333,
+    contentBackgroundColor: #302C40,
+    headerTextColor: #FFFFFF,
+    contentTextColor: #DEDDE0,
+  ),
+);
+
+// Bootstrap Variables
+$primary : #304CFD;
+
+$theme-colors: (
+  "primary" : $primary
+)
