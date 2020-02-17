@@ -1,0 +1,48 @@
+@import "src/styles/common";
+
+.wrapper {
+  $height: 24px;
+  $width: 48px;
+  $sun: #f2c559;
+  $moon: #ffffff;
+  @include flex-center();
+  transition: 1s all ease;
+
+  .switch {
+    visibility: hidden;
+    position: absolute;
+    &:checked {
+      ~ .switch-label {
+        transition: 0.5s all ease;
+        .toggle {
+          $position: -6px;
+          transform: translateX(($width * 0.5) + $position) rotate(90deg);
+          background: transparent;
+          box-shadow: 0px $position 0 0 $moon;
+        }
+      }
+    }
+  }
+
+  .switch-label {
+    @include flex-center();
+    width: $width;
+    height: $height;
+    border: 1px solid #ccc;
+    border-radius: $height;
+    position: relative;
+    cursor: pointer;
+    transition: 1s all ease;
+
+    .toggle {
+      width: $height * 0.75;
+      height: $height * 0.75;
+      transition: 0.7s all ease;
+      border-radius: $height;
+      background-color: $sun;
+      position: absolute;
+      left: 2px;
+      transition: 0.5s all ease;
+    }
+  }
+}

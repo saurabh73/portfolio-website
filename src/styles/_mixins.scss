@@ -1,3 +1,4 @@
+@import "~bootstrap/scss/mixins";
 @mixin themify($themes: $themes) {
   @each $theme, $map in $themes {
     .theme-#{$theme} {
@@ -18,9 +19,8 @@
   }
 }
 
-@mixin flex-center($direction: row) {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: $direction;
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

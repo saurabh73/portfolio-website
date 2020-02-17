@@ -1,10 +1,10 @@
 import React from 'react';
 const Footer = () => {
     return (
-        <footer>
+        <footer className="my-3">
             <nav className="navbar navbar-light bg-transparent justify-content-center">
                 <span>
-                    Made by Saurabh with <i class="fas fa-heart"></i> using <a href="https://www.gatsbyjs.org">Gatsby</a> © {new Date().getFullYear()}
+                    Made with <i className="fas fa-heart"></i> with <a href="https://www.gatsbyjs.org">Gatsby</a> © {new Date().getFullYear()}
                 </span>
             </nav>
         </footer>

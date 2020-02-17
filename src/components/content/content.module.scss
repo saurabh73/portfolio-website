@@ -1,8 +1,0 @@
-@import "../../styles/functions";
-@import "../../styles/theme";
-@import "../../styles/mixins";
-
-@include themify($themes) {
-  color: themed("contentTextColor");
-  background-color: themed("backgroundColor");
-}

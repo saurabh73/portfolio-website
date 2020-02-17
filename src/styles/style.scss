@@ -1,7 +1,93 @@
-@import "./functions";
-@import "./theme";
-@import "./mixins";
+@import "common";
 
 @import "~bootstrap/scss/bootstrap";
-@import "~@fortawesome/fontawesome-free/css/all.min.css"
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 
+$theme-transition: 0.75s;
+
+@include themify($themes) {
+  color: themed("contentTextColor");
+  background-color: themed("backgroundColor");
+  transition: background-color $theme-transition ease,
+    color $theme-transition ease;
+
+  .shadow {
+    box-shadow: 0px 40px 50px themed("shadowColor") !important;
+    transition: box-shadow $theme-transition ease;
+  }
+
+  .box {
+    background-color: themed("contentBackgroundColor");
+    border-radius: 0.5rem;
+    padding: 1.875rem;
+    padding-bottom: 1.875rem;
+    position: relative;
+    transition: box-shadow 0.3s ease-in-out,
+      background-color $theme-transition ease;
+
+    &.flip-right {
+      border-radius: 1.25rem 0.5rem;
+    }
+
+    &.flip-left {
+      border-radius: 0.5rem 1.25rem;
+    }
+    margin-bottom: 30px;
+  }
+
+  header {
+    background-color: themed("backgroundColor");
+    transition: background-color $theme-transition ease;
+
+    .nav-item {
+      a {
+        color: themed("contentTextColor");
+        outline: 0;
+        border: none;
+      }
+    }
+  }
+}
+
+.box-border {
+  border-radius: 0.5rem;
+  &.flip-right {
+    border-radius: 1.25rem 0.5rem;
+  }
+
+  &.flip-left {
+    border-radius: 0.5rem 1.25rem;
+  }
+}
+
+header {
+  height: 5rem;
+  @include media-breakpoint-up(xl) {
+    height: 10rem;
+  }
+
+  .nav-link {
+    font-family: monospace;
+  }
+  .nav-item {
+    &.active {
+      a {
+        color: var(--primary);
+      }
+      font-weight: bold;
+    }
+  }
+}
+
+body {
+  position: relative;
+  @include media-breakpoint-up(xl) {  
+
+    background-image: url("../images/web-developer.svg");
+    background-position: calc(100vw - 500px) calc(100vh - 450px);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 600px;
+  
+  }
+}

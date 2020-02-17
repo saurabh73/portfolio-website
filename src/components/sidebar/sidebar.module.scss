@@ -1,0 +1,16 @@
+@import "src/styles/common";
+
+.image {
+  height: 180px;
+  width: 180px;
+  border-radius: 1.25rem;
+  margin: -7.5rem auto 1.25rem auto;
+  border: 1px solid #ccc;
+}
+
+.sidebar {
+  @include media-breakpoint-up(xl) {
+    position: fixed !important;
+    z-index: $zindex-fixed;
+  }
+}

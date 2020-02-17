@@ -1,15 +1,19 @@
+@import "~bootstrap/scss/variables";
+
 $themes: (
   light: (
     backgroundColor: #F5F6F7,
     contentBackgroundColor: #FFFFFF,
     headerTextColor: #44566C,
-    contentTextColor: #44566C
+    contentTextColor: #44566C,
+    shadowColor: rgba(103, 118, 128, 0.1),
   ),
   dark: (
     backgroundColor: #272333,
     contentBackgroundColor: #302C40,
     headerTextColor: #FFFFFF,
     contentTextColor: #DEDDE0,
+    shadowColor: rgba(32, 29, 42, 0.75),
   ),
 );
 
