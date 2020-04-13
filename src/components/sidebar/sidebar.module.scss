@@ -9,9 +9,7 @@
 }
 
 .sidebar {
-  // width: 100%;
   @include media-breakpoint-up(xl) {
-    // position: fixed !important;
     z-index: $zindex-fixed;
   }
 }

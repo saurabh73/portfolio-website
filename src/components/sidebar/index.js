@@ -13,7 +13,7 @@ const Sidebar = ({hasScrolled}) => {
             profileImage: file(relativePath: { eq: "profile.jpeg" }) {
                 childImageSharp {
                     fixed(width: 180, height: 180) {
-                        ...GatsbyImageSharpFixed_noBase64
+                        ...GatsbyImageSharpFixed
                     }
                 }
             }
