@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import Style from './theme-switcher.module.scss';
 
 const ThemeSwitcher = ({setTheme}) => {
-    const [toggleState, setToggleState] = useState(false);
+    const [toggleState, setToggleState] = useState(localStorage.getItem('theme') === 'theme-dark');
 
     useEffect(() =>{
-        const themeValue = window.localStorage.getItem('theme') === 'theme-light';
-        // console.log(themeValue);
-        setTheme(themeValue ? "theme-light" : "theme-dark");
-        setToggleState(!themeValue)
+        console.log(localStorage.getItem('theme'));
+        if (localStorage.getItem('theme')) {
+            setTheme(toggleState ? "theme-dark" : "theme-light");
+        } else {
+            setTheme("theme-dark");
+        }
     }, [setTheme]);
 
     const handleClick = () => {

@@ -26,7 +26,7 @@ const Layout = ({ children, page }) => {
   //   }
   // `)
 
-  const [theme, setTheme] = useState("");
+  const [theme, setTheme] = useState(localStorage.getItem('theme'));
   const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
@@ -49,16 +49,18 @@ const Layout = ({ children, page }) => {
         }
       }
     });
+  
   }, [setTheme, setHasScrolled]);
 
   const updateTheme = (themeValue) => {
     // console.log("From Layout " + themeValue);
-    setTheme(themeValue);
     const classList = document.body.classList;
     classList.remove("theme-light");
     classList.remove("theme-dark");
-    classList.add(themeValue);
-    window.localStorage.setItem("theme", themeValue);
+    let currentTheme = themeValue || "theme-dark";
+    localStorage.setItem("theme", currentTheme);
+    classList.add(currentTheme);
+    setTheme(currentTheme);
   };
 
   return (
