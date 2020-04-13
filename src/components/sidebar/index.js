@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import Style from './sidebar.module.scss';
 import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
-const Sidebar = () => {
+const Sidebar = ({hasScrolled}) => {
 
     const ref = useRef(null);
     const [width, setWidth] = useState(0);
@@ -12,7 +13,7 @@ const Sidebar = () => {
             profileImage: file(relativePath: { eq: "profile.jpeg" }) {
                 childImageSharp {
                     fixed(width: 180, height: 180) {
-                        ...GatsbyImageSharpFixed
+                        ...GatsbyImageSharpFixed_noBase64
                     }
                 }
             }
@@ -20,7 +21,6 @@ const Sidebar = () => {
     `)
 
     const handleResize = () => {
-        console.log("trigger resize");
         setWidth(ref.current.offsetWidth - 30);
     }
 
@@ -37,9 +37,14 @@ const Sidebar = () => {
 
     return (
         <aside className="col-12 col-md-12 col-xl-3" ref={ref}>
-            <div className={`${Style.sidebar} box shadow flip-right mb-4`} style={{ width: `${width}px` }} >
+            <div className={`${Style.sidebar} box shadow flip-right mb-4`} 
+                style={{ 
+                    width: hasScrolled ? `${width}px` : '100%',
+                    position: hasScrolled ? 'fixed' : 'relative'
+                }} 
+            >
                 <div className="text-center"> 
-                <Img fluid={data.profileImage.childImageSharp.fixed} className={Style.image} />                   
+                <Img fixed={data.profileImage.childImageSharp.fixed} className={Style.image} />                   
                     <h3>Saurabh Dutta</h3>
                     <div className="">Full Stack Developer</div>
                 </div>
@@ -61,4 +66,12 @@ const Sidebar = () => {
         </aside>
     );
 }
+
+
+Sidebar.propTypes = {
+    hasScrolled: PropTypes.bool.isRequired,
+}
+
+
+
 export default Sidebar;

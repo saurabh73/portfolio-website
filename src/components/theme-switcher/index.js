@@ -7,7 +7,7 @@ const ThemeSwitcher = ({setTheme}) => {
 
     useEffect(() =>{
         const themeValue = window.localStorage.getItem('theme') === 'theme-light';
-        console.log(themeValue);
+        // console.log(themeValue);
         setTheme(themeValue ? "theme-light" : "theme-dark");
         setToggleState(!themeValue)
     }, [setTheme]);

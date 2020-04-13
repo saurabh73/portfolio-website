@@ -4,7 +4,6 @@ const Content = ({ children }) => {
     return (
         <div className="col-12 col-md-12 col-xl-9">
             {children}
-            
         </div>
     )
 }
