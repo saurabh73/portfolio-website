@@ -14,7 +14,7 @@ export default function HTML(props) {
         />
         {props.headComponents}
       </head>
-      <body {...props.bodyAttributes}>
+      <body {...props.bodyAttributes} style={{overflow: "hidden"}}>
         {props.preBodyComponents}
 
         <div key={`loader`} id="___loader" >

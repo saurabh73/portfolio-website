@@ -9,6 +9,7 @@ import "./src/styles/style.scss"
 
 export const onInitialClientRender = () => {
     setTimeout(function () {
-        document.getElementById("___loader").style.display = "none"
+        document.getElementsByTagName("body")[0].style.overflow = "auto";
+        document.getElementById("___loader").style.display = "none";
     }, 1000)
 }
