@@ -26,55 +26,43 @@ const Layout = ({ children, page }) => {
   //   }
   // `)
 
-  // const [theme, setTheme] = useState(localStorage.getItem('theme'));
   const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
-     OverlayScrollbars(document.body, {
+    OverlayScrollbars(document.body, {
       nativeScrollbarsOverlaid: {
         initialize: false
-      }, 
+      },
       callbacks: {
-        onInitialized: function() {
+        onInitialized: function () {
           this.scroll(0);
         },
-        onScrollStart: ($event) =>{
+        onScrollStart: ($event) => {
           setHasScrolled($event.target.scrollTop > 0);
-        }, 
+        },
         onScrollStop: ($event) => {
           setHasScrolled($event.target.scrollTop > 0);
         },
-        onOverflowChanged: function() { // use
+        onOverflowChanged: function () { // use
           this.scroll(0);
         }
       }
     });
-  
   }, [setHasScrolled]);
 
-  // const updateTheme = (themeValue) => {
-  //   // console.log("From Layout " + themeValue);
-  //   const classList = document.body.classList;
-  //   classList.remove("theme-light");
-  //   classList.remove("theme-dark");
-  //   let currentTheme = themeValue || "theme-dark";
-  //   localStorage.setItem("theme", currentTheme);
-  //   classList.add(currentTheme);
-  //   setTheme(currentTheme);
-  // };
 
   return (
     <>
       <Header activePage={page}></Header>
-        <main style={{ marginTop: "10rem", display: "flex", justifyContent: "center" }}>
+      <main style={{ marginTop: "10rem", display: "flex", justifyContent: "center" }}>
 
-          <div className="container mx-0">
-            <div className="row">
-              <Sidebar hasScrolled={hasScrolled}></Sidebar>
-              <Content>{children}</Content>
-            </div>
+        <div className="container mx-0">
+          <div className="row">
+            <Sidebar hasScrolled={hasScrolled}></Sidebar>
+            <Content>{children}</Content>
           </div>
-        </main>
+        </div>
+      </main>
       <Footer></Footer>
     </>
   )
@@ -88,6 +76,5 @@ Layout.propTypes = {
 Layout.defaultProps = {
   page: ``,
 }
-
 
 export default Layout

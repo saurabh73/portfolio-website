@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import Style from './sidebar.module.scss';
 import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
-const Sidebar = ({hasScrolled}) => {
+import { isMobile } from "react-device-detect";
+const Sidebar = ({ hasScrolled }) => {
 
     const ref = useRef(null);
     const [width, setWidth] = useState(0);
@@ -37,14 +38,14 @@ const Sidebar = ({hasScrolled}) => {
 
     return (
         <aside className="col-12 col-md-12 col-xl-3" ref={ref}>
-            <div className={`${Style.sidebar} box shadow flip-right mb-4`} 
-                style={{ 
+            <div className={`${Style.sidebar} box shadow flip-right mb-4`}
+                style={{
                     width: hasScrolled ? `${width}px` : '100%',
-                    position: hasScrolled ? 'fixed' : 'relative'
-                }} 
+                    position: hasScrolled && !isMobile ? 'fixed' : 'relative'
+                }}
             >
-                <div className="text-center"> 
-                <Img fixed={data.profileImage.childImageSharp.fixed} className={Style.image} />                   
+                <div className="text-center">
+                    <Img fixed={data.profileImage.childImageSharp.fixed} className={Style.image} />
                     <h3>Saurabh Dutta</h3>
                     <div className="">Full Stack Developer</div>
                 </div>
