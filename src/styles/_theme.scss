@@ -2,24 +2,24 @@
 
 $themes: (
   light: (
-    backgroundColor: #F5F6F7,
-    contentBackgroundColor: #FFFFFF,
-    headerTextColor: #44566C,
-    contentTextColor: #44566C,
+    backgroundColor: #f5f6f7,
+    contentBackgroundColor: #ffffff,
+    headerTextColor: #44566c,
+    contentTextColor: #44566c,
     shadowColor: rgba(103, 118, 128, 0.1),
   ),
   dark: (
     backgroundColor: #272333,
-    contentBackgroundColor: #302C40,
-    headerTextColor: #FFFFFF,
-    contentTextColor: #DEDDE0,
+    contentBackgroundColor: #302c40,
+    headerTextColor: #ffffff,
+    contentTextColor: #dedde0,
     shadowColor: rgba(32, 29, 42, 0.75),
   ),
 );
 
 // Bootstrap Variables
-$primary : #304CFD;
+$primary: #304cfd;
 
 $theme-colors: (
-  "primary" : $primary
-)
+  "primary": $primary,
+);

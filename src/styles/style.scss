@@ -49,7 +49,6 @@ $theme-transition: 0.75s;
   }
 }
 
-
 .box-border {
   border-radius: 0.5rem;
   &.flip-right {
@@ -93,7 +92,8 @@ body {
   right: 0;
   bottom: 0;
   z-index: 10000;
-  transition: background-color $theme-transition ease, color $theme-transition ease;
+  transition: background-color $theme-transition ease,
+    color $theme-transition ease;
   // background-color: green;
 
   .loadingScreen {

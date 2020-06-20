@@ -53,9 +53,8 @@ const Layout = ({ children, page }) => {
 
   return (
     <>
-      <Header activePage={page}></Header>
+      <Header activePage={page} menuStateActive={false}></Header>
       <main style={{ marginTop: "10rem", display: "flex", justifyContent: "center" }}>
-
         <div className="container mx-0">
           <div className="row">
             <Sidebar hasScrolled={hasScrolled}></Sidebar>

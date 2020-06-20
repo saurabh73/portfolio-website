@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "gatsby"
 import ThemeSwitcher from './../theme-switcher';
-
-const Header = ({ activePage }) => {
+import Hamburger from 'react-hamburgers'
+const Header = ({ activePage, menuStateActive }) => {
 
     const routes = {
         home: "home",
@@ -22,10 +22,18 @@ const Header = ({ activePage }) => {
     };
 
     return (
-        <header className="navbar  navbar-expand-lg fixed-top">
+        <header className="navbar navbar-expand-lg fixed-top">
             <div className="container">
                 <div className="row mx-0 w-100 justify-content-end">
                     <div className="col-12 col-md-12 col-xl-9 px-0">
+                        <Hamburger
+                            active={menuStateActive}
+                            type="slider"
+                            onClick={() => {
+                                console.log("Menu Clicked");
+                                menuStateActive = !menuStateActive;
+                            }}
+                        />
                         <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
                             <ul className="navbar-nav">
                                 <li className={`nav-item ${addActiveClass(routes.home)}`.trim()}>
@@ -55,6 +63,11 @@ const Header = ({ activePage }) => {
 
 Header.propTypes = {
     activePage: PropTypes.string.isRequired,
+    menuStateActive: PropTypes.bool
+}
+
+Header.defaultProps = {
+    menuStateActive: false
 }
 
 
