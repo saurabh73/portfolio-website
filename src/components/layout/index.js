@@ -26,7 +26,7 @@ const Layout = ({ children, page }) => {
   //   }
   // `)
 
-  const [theme, setTheme] = useState(localStorage.getItem('theme'));
+  // const [theme, setTheme] = useState(localStorage.getItem('theme'));
   const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
@@ -50,22 +50,22 @@ const Layout = ({ children, page }) => {
       }
     });
   
-  }, [setTheme, setHasScrolled]);
+  }, [setHasScrolled]);
 
-  const updateTheme = (themeValue) => {
-    // console.log("From Layout " + themeValue);
-    const classList = document.body.classList;
-    classList.remove("theme-light");
-    classList.remove("theme-dark");
-    let currentTheme = themeValue || "theme-dark";
-    localStorage.setItem("theme", currentTheme);
-    classList.add(currentTheme);
-    setTheme(currentTheme);
-  };
+  // const updateTheme = (themeValue) => {
+  //   // console.log("From Layout " + themeValue);
+  //   const classList = document.body.classList;
+  //   classList.remove("theme-light");
+  //   classList.remove("theme-dark");
+  //   let currentTheme = themeValue || "theme-dark";
+  //   localStorage.setItem("theme", currentTheme);
+  //   classList.add(currentTheme);
+  //   setTheme(currentTheme);
+  // };
 
   return (
     <>
-      <Header activePage={page} setTheme={updateTheme}></Header>
+      <Header activePage={page}></Header>
         <main style={{ marginTop: "10rem", display: "flex", justifyContent: "center" }}>
 
           <div className="container mx-0">

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from "gatsby"
 import ThemeSwitcher from './../theme-switcher';
 
-const Header = ({ activePage, setTheme }) => {
+const Header = ({ activePage }) => {
 
     const routes = {
         home: "home",
@@ -44,7 +44,7 @@ const Header = ({ activePage, setTheme }) => {
                                     <Link className="nav-link" to={'/' + routes.blog}>/{routes.blog}</Link>
                                 </li>
                             </ul>
-                            <ThemeSwitcher setTheme={setTheme}></ThemeSwitcher>
+                            <ThemeSwitcher></ThemeSwitcher>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,6 @@ const Header = ({ activePage, setTheme }) => {
 
 Header.propTypes = {
     activePage: PropTypes.string.isRequired,
-    setTheme: PropTypes.func.isRequired
 }
 
 
