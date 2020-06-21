@@ -6,14 +6,12 @@ const ThemeSwitcher = () => {
   return (
     <ThemeToggler>
       {({ theme, toggleTheme }) => {
-        if (theme == null) {
-          return null;
-        }
         return (
           <div className={Style.wrapper} >
             <input type="checkbox" className={Style.switch} id="switch"
-              onChange={e => toggleTheme(e.target.checked ? 'theme-dark' : 'theme-light')}
-              checked={theme === 'theme-dark'} />
+              checked={theme === 'theme-light'}
+              onChange={e => toggleTheme(e.target.checked ? 'theme-light' : 'theme-dark')}
+            />
             <label htmlFor="switch" className={`switch-label ${Style.switchLabel}`}>
               <div className={Style.toggle}></div>
             </label>

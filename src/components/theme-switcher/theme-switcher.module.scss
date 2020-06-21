@@ -21,8 +21,9 @@
         .toggle {
           $position: -6px;
           transform: translateX(($width * 0.5) + $position) rotate(90deg);
-          background: transparent;
-          box-shadow: 0px $position 0 0 $moon;
+          background: $sun;
+          // box-shadow: 0px $position 0 0 $sun;
+          box-shadow: none;
         }
       }
     }
@@ -42,12 +43,15 @@
     .toggle {
       width: $height * 0.75;
       height: $height * 0.75;
+      $position: 6px;
       transition: 0.7s all ease;
       border-radius: $height;
-      background-color: $sun;
+      background-color: transparent;
       position: absolute;
-      left: 2px;
+      left: 8px;
       transition: 0.5s all ease;
+      transform: rotate(90deg);
+      box-shadow: 0px 6px 0 0 $moon;
     }
   }
 }
