@@ -6,6 +6,9 @@ const ThemeSwitcher = () => {
   return (
     <ThemeToggler>
       {({ theme, toggleTheme }) => {
+        if (theme == null) {
+          return null;
+        }
         return (
           <div className={Style.wrapper} >
             <input type="checkbox" className={Style.switch} id="switch"
