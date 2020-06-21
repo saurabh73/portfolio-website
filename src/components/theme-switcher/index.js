@@ -16,9 +16,7 @@ const ThemeSwitcher = () => {
               className={Style.switch}
               id="switch"
               checked={theme === "light"}
-              onChange={e =>
-                toggleTheme(e.target.checked ? "light" : "dark")
-              }
+              onChange={e => toggleTheme(e.target.checked ? "light" : "dark")}
             />
             <label
               htmlFor="switch"

@@ -2,7 +2,7 @@ import React from "react";
 
 const loadingScreen = () => {
   return (
-    <div className={`loadingScreen theme-dark`}>
+    <div className={`loadingScreen dark`}>
       <svg
         className="coffee"
         width="37"
