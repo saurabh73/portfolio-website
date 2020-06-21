@@ -5,11 +5,11 @@
  */
 
 // You can delete this file if you're not using it
-import "./src/styles/style.scss"
+import "./src/styles/style.scss";
 
 export const onInitialClientRender = () => {
-    setTimeout(function () {
-        document.getElementsByTagName("body")[0].style.overflow = "auto";
-        document.getElementById("___loader").style.display = "none";
-    }, 1000)
-}
+  setTimeout(function() {
+    document.getElementsByTagName("body")[0].style.overflow = "auto";
+    document.getElementById("___loader").style.display = "none";
+  }, 1000);
+};
