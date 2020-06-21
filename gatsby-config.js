@@ -32,5 +32,15 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
     "gatsby-plugin-dark-mode",
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: '9tpjt9dg',
+        dataset: 'production',
+        token: process.env.SANITY_TOKEN,
+        watchMode: false,
+        overlayDrafts: true
+      }
+    },
   ],
 };
