@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import ThemeSwitcher from './../theme-switcher';
 import Hamburger from 'react-hamburgers';
-import { isMobile } from "react-device-detect";
 import PageMenu from './../page-menu';
 const Header = ({ activePage, isMenuActive, setIsMenuActive }) => {
 
