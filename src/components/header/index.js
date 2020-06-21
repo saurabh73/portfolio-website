@@ -1,73 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from "gatsby"
+
 import ThemeSwitcher from './../theme-switcher';
-import Hamburger from 'react-hamburgers'
-const Header = ({ activePage, menuStateActive }) => {
+import Hamburger from 'react-hamburgers';
+import { isMobile } from "react-device-detect";
+import PageMenu from './../page-menu';
+const Header = ({ activePage, isMenuActive, setIsMenuActive }) => {
 
-  const routes = {
-    home: "home",
-    portfolio: "portfolio",
-    uses: "uses",
-    now: "now",
-    blog: "blog",
-  }
 
-  const addActiveClass = (page) => {
-    const activeClass = 'active';
-    if (activePage === page) {
-      return `${activeClass}`;
-    }
-    return "";
-  };
+  const [menuStateActive, setMenuStateActive] = useState(isMenuActive);
+
+
 
   return (
     <header className="navbar navbar-expand-lg fixed-top">
       <div className="container">
         <div className="row mx-0 w-100 justify-content-end">
           <div className="col-12 col-md-12 col-xl-9 px-0">
-            <Hamburger
-              active={menuStateActive}
-              type="slider"
-              onClick={() => {
-                console.log("Menu Clicked");
-                menuStateActive = !menuStateActive;
-              }}
-            />
+            {isMobile &&
+              <div className="d-flex justify-content-between">
+                <Hamburger
+                  active={menuStateActive}
+                  type="squeeze"
+                  onClick={() => {
+                    console.log(`Menu Clicked ${menuStateActive}`);
+                    setMenuStateActive(!menuStateActive);
+                    setIsMenuActive(!menuStateActive);
+                  }}
+                />
+                <span className="mobile-page-name">{`/${activePage}`}</span>
+                <ThemeSwitcher></ThemeSwitcher>
+              </div>
+            }
+
             <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
-              <ul className="navbar-nav">
-                <li className={`nav-item ${addActiveClass(routes.home)}`.trim()}>
-                  <Link className="nav-link" to="/">/{routes.home}</Link>
-                </li>
-                <li className={`nav-item ${addActiveClass(routes.portfolio)}`.trim()}>
-                  <Link className="nav-link" to={'/' + routes.portfolio}>/{routes.portfolio}</Link>
-                </li>
-                <li className={`nav-item ${addActiveClass(routes.uses)}`.trim()}>
-                  <Link className="nav-link" to={'/' + routes.uses}>/{routes.uses}</Link>
-                </li>
-                <li className={`nav-item ${addActiveClass(routes.now)}`.trim()}>
-                  <Link className="nav-link" to={'/' + routes.now}>/{routes.now}</Link>
-                </li>
-                <li className={`nav-item ${addActiveClass(routes.blog)}`.trim()}>
-                  <Link className="nav-link" to={'/' + routes.blog}>/{routes.blog}</Link>
-                </li>
-              </ul>
-              <ThemeSwitcher></ThemeSwitcher>
+              <PageMenu activePage={activePage}></PageMenu>
+              {!isMobile && <ThemeSwitcher></ThemeSwitcher>}
             </div>
           </div>
         </div>
       </div>
-    </header>
+    </header >
   );
 }
 
 Header.propTypes = {
   activePage: PropTypes.string.isRequired,
-  menuStateActive: PropTypes.bool
+  isMenuActive: PropTypes.bool,
+  setIsMenuActive: PropTypes.func
 }
 
 Header.defaultProps = {
-  menuStateActive: false
+  isMenuActive: false,
+  setIsMenuActive: () => { console.log("menu action") }
 }
 
 

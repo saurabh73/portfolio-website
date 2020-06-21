@@ -15,6 +15,8 @@ import Footer from "./../footer";
 import Header from "./../header";
 import 'overlayscrollbars/css/OverlayScrollbars.css';
 import OverlayScrollbars from 'overlayscrollbars';
+import OverlayMenu from 'react-overlay-menu';
+import PageMenu from './../page-menu';
 const Layout = ({ children, page }) => {
   // const data = useStaticQuery(graphql`
   //   query SiteTitleQuery {
@@ -27,6 +29,8 @@ const Layout = ({ children, page }) => {
   // `)
 
   const [hasScrolled, setHasScrolled] = useState(false);
+
+  const [isMenuActive, setIsMenuActive] = useState(false);
 
   useEffect(() => {
     OverlayScrollbars(document.body, {
@@ -53,7 +57,10 @@ const Layout = ({ children, page }) => {
 
   return (
     <>
-      <Header activePage={page} menuStateActive={false}></Header>
+      <Header activePage={page} menuStateActive={isMenuActive} setIsMenuActive={setIsMenuActive}></Header>
+      <OverlayMenu open={isMenuActive}>
+        <PageMenu activePage={page} isVertical={true}></PageMenu>
+      </OverlayMenu>
       <main style={{ marginTop: "10rem", display: "flex", justifyContent: "center" }}>
         <div className="container mx-0">
           <div className="row">

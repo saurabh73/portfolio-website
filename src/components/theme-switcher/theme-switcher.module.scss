@@ -6,6 +6,7 @@
   $sun: #f2c559;
   $moon: #ffffff;
   @include flex-center();
+  // display: inline-flex;
   transition: 1s all ease;
 
   .switch {
@@ -28,11 +29,12 @@
     @include flex-center();
     width: $width;
     height: $height;
-    border: 1px solid #ccc;
     border-radius: $height;
+    border: 1px solid #cccccc;
     position: relative;
     cursor: pointer;
     transition: 1s all ease;
+    margin-bottom: 0;
 
     .toggle {
       width: $height * 0.75;

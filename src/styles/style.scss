@@ -1,9 +1,8 @@
 @import "common";
 
 @import "~bootstrap/scss/bootstrap";
+@import "~hamburgers/_sass/hamburgers/hamburgers.scss";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
-
-$theme-transition: 0.75s;
 
 @include themify($themes) {
   color: themed("contentTextColor");
@@ -36,16 +35,68 @@ $theme-transition: 0.75s;
   }
 
   header {
+    height: 5rem;
+    @include media-breakpoint-up(xl) {
+      height: 10rem;
+    }
     background-color: themed("backgroundColor");
     transition: background-color $theme-transition ease;
 
+    .mobile-page-name {
+      padding-left: 1rem;
+      font-size: 1.5rem;
+      font-family: monospace;
+      line-height: 2;
+    }
+  }
+
+  .page-menu {
+    .nav-link {
+      font-family: monospace;
+    }
     .nav-item {
+      font-size: 1.2rem;
       a {
         color: themed("contentTextColor");
         outline: 0;
         border: none;
       }
+      &.active {
+        a {
+          color: var(--primary);
+        }
+        font-weight: bold;
+      }
     }
+
+    &.flex-column {
+      font-size: 1.5rem;
+
+      .nav-item {
+        padding: 20px 5px;
+      }
+    }
+  }
+
+  .overlay-menu__overlay {
+    background-color: themed("backgroundColor");
+    box-shadow: none;
+    transition: background-color $theme-transition ease;
+  }
+
+  .overlay-menu__wrap {
+    position: unset;
+    background: none;
+    padding-top: 80px;
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after,
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: themed("contentTextColor");
   }
 }
 
@@ -60,29 +111,17 @@ $theme-transition: 0.75s;
   }
 }
 
-header {
-  height: 5rem;
-  @include media-breakpoint-up(xl) {
-    height: 10rem;
-  }
-
-  .nav-link {
-    font-family: monospace;
-  }
-  .nav-item {
-    &.active {
-      a {
-        color: var(--primary);
-      }
-      font-weight: bold;
-    }
-  }
-}
-
 body {
   position: relative;
 }
 
+button:focus {
+  outline: 0;
+}
+
+.font-lg {
+  font-size: 1.5rem;
+}
 // Loading
 
 #___loader {
