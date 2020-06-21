@@ -2,7 +2,7 @@ import React from "react";
 
 const loadingScreen = () => {
   return (
-    <div className={`loadingScreen dark`}>
+    <div className="loadingScreen">
       <svg
         className="coffee"
         width="37"
