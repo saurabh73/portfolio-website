@@ -7,6 +7,9 @@
   $moon: #ffffff;
   @include flex-center();
   // display: inline-flex;
+  position: absolute;
+  right: 0;
+  top: calc(50% - 12px);
   transition: 1s all ease;
 
   .switch {

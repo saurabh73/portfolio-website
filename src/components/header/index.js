@@ -29,16 +29,14 @@ const Header = ({ activePage, isMenuActive, setIsMenuActive }) => {
                 }}
               />
               <span className="mobile-page-name">{`/${activePage}`}</span>
-              <ThemeSwitcher></ThemeSwitcher>
+              {/* add empty span */}
+              <span style={{ width: '50px' }}></span>
             </div>
-
-
             {/* Desktop Header */}
             <div className="d-none d-sm-flex collapse navbar-collapse justify-content-between" id="navbarNav">
               <PageMenu activePage={activePage}></PageMenu>
-              <ThemeSwitcher></ThemeSwitcher>
             </div>
-
+            <ThemeSwitcher></ThemeSwitcher>
           </div>
         </div>
       </div>
