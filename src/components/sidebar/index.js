@@ -8,23 +8,45 @@ const Sidebar = ({ hasScrolled }) => {
   const ref = useRef(null);
   const [width, setWidth] = useState(0);
 
-  const data = useStaticQuery(graphql`
-    query {
-      profileImage: file(relativePath: { eq: "profile.jpeg" }) {
-        childImageSharp {
-          fixed(width: 180, height: 180) {
-            ...GatsbyImageSharpFixed
+  const data = useStaticQuery(graphql`{
+    sanityProfileSummary {
+      id
+      bio
+      name
+      socialLinks {
+        handle
+        link
+        domain
+      }
+      jobTitle
+      image {
+        asset {
+          fixed(height: 180, width: 180) {
+            ...GatsbySanityImageFixed
           }
         }
       }
+      contactQR {
+        asset {
+          fluid(maxWidth: 500) {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      resume {
+        asset {
+          url
+        }
+      }
     }
-  `);
+  }`);
 
   const handleResize = () => {
     setWidth(ref.current.offsetWidth - 30);
   };
 
   useEffect(() => {
+    console.log(data);
     handleResize();
     if (ref.current) {
       window.addEventListener("resize", handleResize);
@@ -46,40 +68,46 @@ const Sidebar = ({ hasScrolled }) => {
       >
         <div className="text-center">
           <Img
-            fixed={data.profileImage.childImageSharp.fixed}
+            fixed={data.sanityProfileSummary.image.asset.fixed}
             className={Style.image}
           />
-          <h3>Saurabh Dutta</h3>
-          <div className="">Full Stack Developer</div>
+          <h3 className="text-primary">{data.sanityProfileSummary.name}</h3>
+          <p>{data.sanityProfileSummary.jobTitle}</p>
+          <p className="text-left">
+            {data.sanityProfileSummary.bio}
+          </p>
         </div>
 
         <div className="contact-content my-3">
-          <ul className="list-group">
-            <li className="list-group-item border-0 px-0 py-1 bg-transparent">
-              Cras justo odio
-            </li>
-            <li className="list-group-item border-0 px-0 py-1 bg-transparent">
-              Dapibus ac facilisis in
-            </li>
-            <li className="list-group-item border-0 px-0 py-1 bg-transparent">
-              Morbi leo risus
-            </li>
-            <li className="list-group-item border-0 px-0 py-1 bg-transparent">
-              Porta ac consectetur ac
-            </li>
-            <li className="list-group-item border-0 px-0 py-1 bg-transparent">
-              Vestibulum at eros
-            </li>
-          </ul>
+          <div className="row mx-0 justify-content-between">
+            <div className="bg-light d-flex justify-content-center align-items-center" style={{ height: 32, width: 32 }}>
+              <i class="fab fa-lg fa-github text-dark"></i>
+            </div>
+            <div className="bg-light d-flex justify-content-center align-items-center" style={{ height: 32, width: 32 }}>
+              <i class="fab fa-lg fa-github text-dark"></i>
+            </div>
+            <div className="bg-light d-flex justify-content-center align-items-center" style={{ height: 32, width: 32 }}>
+              <i class="fab fa-lg fa-github text-dark"></i>
+            </div>
+            <div className="bg-light d-flex justify-content-center align-items-center" style={{ height: 32, width: 32 }}>
+              <i class="fab fa-lg fa-github text-dark"></i>
+            </div>
+
+          </div>
+        </div>
+
+        <div className="qr-section my-3 d-none d-sm-block">
+          <p className="font-weight-bold mb-0">Import Contact</p>
+          <Img fluid={data.sanityProfileSummary.contactQR.asset.fluid} />
         </div>
 
         <div className="resume-section mt-3">
-          <button className="btn btn-primary btn-block py-3 box-border flip-right">
+          <a target="_blank" href={data.sanityProfileSummary.resume.asset.url} className="btn btn-primary btn-block py-3 box-border flip-right" download={`saurabh-dutta-resume-${new Date().toISOString().split('T')[0]}`}>
             Download Resume
-          </button>
+          </a>
         </div>
       </div>
-    </aside>
+    </aside >
   );
 };
 

@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env`
+})
+
 module.exports = {
   siteMetadata: {
     title: `Saurabh Dutta`,
@@ -35,10 +39,10 @@ module.exports = {
     {
       resolve: 'gatsby-source-sanity',
       options: {
-        projectId: '9tpjt9dg',
-        dataset: 'production',
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
         token: process.env.SANITY_TOKEN,
-        watchMode: false,
+        watchMode: true,
         overlayDrafts: true
       }
     },
