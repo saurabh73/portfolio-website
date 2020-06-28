@@ -4,12 +4,18 @@
   height: 180px;
   width: 180px;
   border-radius: 1.25rem;
-  margin: calc(-7rem + 2px) auto 1.25rem auto;
+
+  @include media-breakpoint-up(lg) {
+    margin: calc(-7rem + 2px) auto 1.25rem auto;
+  }
   border: 1px solid #ccc;
 }
 
 .sidebar {
-  @include media-breakpoint-up(xl) {
+  display: none;
+  @include media-breakpoint-up(lg) {
+    display: block;
+    position: fixed;
     z-index: $zindex-fixed;
   }
 }

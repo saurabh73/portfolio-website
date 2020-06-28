@@ -7,7 +7,6 @@
 
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useStaticQuery, graphql } from "gatsby";
 
 import Sidebar from "./../sidebar";
 import Content from "./../content";
@@ -18,17 +17,6 @@ import OverlayScrollbars from "overlayscrollbars";
 import OverlayMenu from "react-overlay-menu";
 import PageMenu from "./../page-menu";
 const Layout = ({ children, page }) => {
-  // const data = useStaticQuery(graphql`
-  //   query SiteTitleQuery {
-  //     site {
-  //       siteMetadata {
-  //         title
-  //       }
-  //     }
-  //   }
-  // `)
-
-  const [hasScrolled, setHasScrolled] = useState(false);
 
   const [isMenuActive, setIsMenuActive] = useState(false);
 
@@ -38,43 +26,30 @@ const Layout = ({ children, page }) => {
         initialize: false,
       },
       callbacks: {
-        onInitialized: function() {
+        onInitialized: function () {
           this.scroll(0);
         },
-        onScrollStart: $event => {
-          setHasScrolled($event.target.scrollTop > 0);
-        },
-        onScrollStop: $event => {
-          setHasScrolled($event.target.scrollTop > 0);
-        },
-        onOverflowChanged: function() {
-          // use
+        onOverflowChanged: function () {
           this.scroll(0);
         },
       },
     });
-  }, [setHasScrolled]);
+  });
 
   return (
     <>
       <Header
         activePage={page}
         menuStateActive={isMenuActive}
-        setIsMenuActive={setIsMenuActive}
-      ></Header>
+        setIsMenuActive={setIsMenuActive}>
+      </Header>
       <OverlayMenu open={isMenuActive}>
         <PageMenu activePage={page} isVertical={true}></PageMenu>
       </OverlayMenu>
-      <main
-        style={{
-          marginTop: "10rem",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
+      <main>
         <div className="container mx-0">
           <div className="row">
-            <Sidebar hasScrolled={hasScrolled}></Sidebar>
+            <Sidebar></Sidebar>
             <Content>{children}</Content>
           </div>
         </div>

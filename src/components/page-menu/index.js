@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
+import SidebarContent from "./../sidebar/content";
 const PageMenu = ({ activePage, isVertical }) => {
   const routes = {
     home: "/",
     portfolio: "/portfolio",
     uses: "/uses",
-    now: "/now",
     blog: "/blog",
   };
 
@@ -18,17 +18,25 @@ const PageMenu = ({ activePage, isVertical }) => {
     return "";
   };
 
-  return (
-    <ul className={`page-menu nav ${isVertical ? "flex-column" : "flex-row"}`}>
-      {Object.keys(routes).map(key => (
-        <li className={`nav-item ${addActiveClass(key)}`.trim()} key={key}>
-          <Link className="nav-link" to={routes[key]}>
-            /{key}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
+  const menu = <ul className={`page-menu nav ${isVertical ? "nav-mobile" : "flex-row"}`}>
+    {Object.keys(routes).map(key => (
+      <li className={`nav-item ${addActiveClass(key)}`.trim()} key={key}>
+        <Link className="nav-link" to={routes[key]}>
+          /{key}
+        </Link>
+      </li>
+    ))}
+  </ul>;
+
+  if (isVertical) {
+    return (
+      <SidebarContent>
+        {menu}
+      </SidebarContent>
+    );
+  } else {
+    return menu;
+  }
 };
 
 PageMenu.propTypes = {

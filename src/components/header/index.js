@@ -11,9 +11,9 @@ const Header = ({ activePage, isMenuActive, setIsMenuActive }) => {
     <header className="navbar navbar-expand-lg fixed-top">
       <div className="container">
         <div className="row mx-0 w-100 justify-content-end">
-          <div className="col-12 col-md-12 col-xl-9 px-0">
+          <div className="col-12 col-md-12 col-lg-8 col-xl-9 px-0">
             {/* Mobile Header */}
-            <div className="d-flex d-sm-none justify-content-between">
+            <div className="only-mobile-flex justify-content-between">
               <Hamburger
                 active={menuStateActive}
                 type="squeeze"
@@ -29,7 +29,7 @@ const Header = ({ activePage, isMenuActive, setIsMenuActive }) => {
             </div>
             {/* Desktop Header */}
             <div
-              className="d-none d-sm-flex collapse navbar-collapse justify-content-between"
+              className="except-mobile-flex collapse navbar-collapse justify-content-between"
               id="navbarNav"
             >
               <PageMenu activePage={activePage}></PageMenu>

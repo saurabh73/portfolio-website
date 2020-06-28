@@ -4,105 +4,141 @@
 @import "~hamburgers/_sass/hamburgers/hamburgers.scss";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
-@include themify($themes) {
-  color: themed("contentTextColor");
-  background-color: themed("backgroundColor");
-  transition: background-color $theme-transition ease,
-    color $theme-transition ease;
+@import "loader";
 
-  .loadingScreen {
-    background-color: themed("backgroundColor");
+body {
+  position: relative;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  padding: 0 0.5rem;
+  @include media-breakpoint-up(lg) {
+    margin-top: 10rem;
+    padding-right: unset;
+    padding-left: unset;
+  }
+}
+
+header {
+  height: 5rem;
+  @include media-breakpoint-up(lg) {
+    height: 10rem;
   }
 
-  .shadow {
-    box-shadow: 0px 40px 50px themed("shadowColor") !important;
-    transition: box-shadow $theme-transition ease;
+  .mobile-page-name {
+    padding-left: 1rem;
+    font-size: 1.5rem;
+    font-family: monospace;
+    line-height: 2;
   }
+}
 
-  .box {
-    background-color: themed("contentBackgroundColor");
-    border-radius: 0.5rem;
-    padding: 1.875rem;
-    padding-bottom: 1.875rem;
-    position: relative;
-    transition: box-shadow 0.3s ease-in-out,
-      background-color $theme-transition ease;
+// General Non theme Related
+.except-mobile-flex {
+  @extend .d-none;
+  @extend .d-lg-flex;
+}
 
-    &.flip-right {
-      border-radius: 1.25rem 0.5rem;
-    }
+.only-mobile-flex {
+  @extend .d-flex;
+  @extend .d-lg-none;
+}
 
-    &.flip-left {
-      border-radius: 0.5rem 1.25rem;
-    }
-    margin-bottom: 30px;
+.except-mobile-block {
+  @extend .d-none;
+  @extend .d-lg-block;
+}
+
+.only-mobile-block {
+  @extend .d-block;
+  @extend .d-lg-none;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.font-lg {
+  font-size: 1.5rem;
+}
+
+.page-menu {
+  .nav-link {
+    font-family: monospace;
   }
-
-  header {
-    height: 5rem;
-    @include media-breakpoint-up(xl) {
-      height: 10rem;
+  .nav-item {
+    font-size: 1.2rem;
+    a {
+      outline: 0;
+      border: none;
     }
-    background-color: themed("backgroundColor");
-    transition: background-color $theme-transition ease;
-
-    .mobile-page-name {
-      padding-left: 1rem;
-      font-size: 1.5rem;
-      font-family: monospace;
-      line-height: 2;
-    }
-  }
-
-  .page-menu {
-    .nav-link {
-      font-family: monospace;
-    }
-    .nav-item {
-      font-size: 1.2rem;
+    &.active {
       a {
-        color: themed("contentTextColor");
-        outline: 0;
-        border: none;
+        color: var(--primary);
       }
-      &.active {
-        a {
-          color: var(--primary);
-        }
-        font-weight: bold;
-      }
-    }
-
-    &.flex-column {
-      font-size: 1.5rem;
-
-      .nav-item {
-        padding: 20px 5px;
-      }
+      font-weight: bold;
     }
   }
+}
 
-  .overlay-menu__overlay {
-    background-color: themed("backgroundColor");
-    box-shadow: none;
-    transition: background-color $theme-transition ease;
+.page-menu.nav.nav-mobile {
+  height: 140px;
+  max-width: 100%;
+  font-size: 1.5rem;
+  flex-direction: column;
+  // flex-wrap: wrap;
+  .nav-item {
+    display: flex;
+    width: 50%;
+    flex-grow: 0;
+    padding: 10px 5px;
+    &:nth-child(odd) {
+      padding-bottom: 5px;
+    }
+    &:nth-child(even) {
+      padding-top: 5px;
+    }
+
+    .nav-link {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      width: 100%;
+    }
+  }
+}
+
+.overlay-menu__overlay {
+  box-shadow: none;
+}
+
+.overlay-menu__wrap {
+  position: unset !important;
+  background: none !important;
+  box-shadow: none !important;
+  padding-top: 80px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1.5rem;
+}
+
+.box {
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  position: relative;
+
+  &.flip-right {
+    border-radius: 1.25rem 0.5rem;
   }
 
-  .overlay-menu__wrap {
-    position: unset;
-    background: none;
-    box-shadow: none;
-    padding-top: 80px;
+  &.flip-left {
+    border-radius: 0.5rem 1.25rem;
   }
-
-  .hamburger-inner,
-  .hamburger-inner::before,
-  .hamburger-inner::after,
-  .hamburger.is-active .hamburger-inner,
-  .hamburger.is-active .hamburger-inner::before,
-  .hamburger.is-active .hamburger-inner::after {
-    background-color: themed("contentTextColor");
-  }
+  margin-bottom: 1.5rem;
 }
 
 .box-border {
@@ -116,120 +152,61 @@
   }
 }
 
-body {
-  position: relative;
-}
+// Only Theme related
+@include themify($themes) {
+  color: themed("contentTextColor");
+  background-color: themed("backgroundColor");
 
-button:focus {
-  outline: 0;
-}
+  .shadow {
+    box-shadow: 0px 40px 50px themed("shadowColor") !important;
+    transition: box-shadow $theme-transition ease;
+  }
 
-.font-lg {
-  font-size: 1.5rem;
-}
-// Loading
+  .box {
+    background-color: themed("contentBackgroundColor");
+    transition: box-shadow 0.3s ease-in-out,
+      background-color $theme-transition ease;
+  }
 
-#___loader {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10000;
-  transition: background-color $theme-transition ease,
-    color $theme-transition ease;
-  // background-color: green;
+  header {
+    background-color: themed("backgroundColor");
+    transition: background-color $theme-transition ease;
+  }
 
-  .loadingScreen {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    .coffee {
-      transform: scale(2);
-      stroke: var(--primary);
-      margin-bottom: 2rem;
-      width: 400px;
-
-      .steamL {
-        stroke-dasharray: 13;
-        stroke-dashoffset: 13;
-        stroke-width: 2;
-        animation: steamLarge 2s infinite;
+  .page-menu {
+    .nav-item {
+      a {
+        color: themed("contentTextColor");
       }
 
-      .steamR {
-        stroke-dasharray: 9;
-        stroke-dashoffset: 9;
-        stroke-width: 2;
-        animation: steamSmall 2s infinite;
-      }
-    }
-
-    .brewing {
-      min-width: 300px;
-      width: 100%;
-      font-family: monospace;
-      font-weight: 500;
-      font-size: 1.5rem;
-      color: var(--primary);
-      text-align: center;
-      text-transform: lowercase;
-      letter-spacing: 2px;
-
-      &:after {
-        content: ".";
-        animation: dots 1s steps(5, end) infinite;
-        letter-spacing: 5px;
+      &.active {
+        a {
+          color: var(--primary);
+        }
       }
     }
   }
-}
 
-@keyframes steamLarge {
-  0% {
-    stroke-dashoffset: 13;
-    opacity: 0.6;
+  .overlay-menu__overlay {
+    background-color: themed("backgroundColor");
+    transition: background-color $theme-transition ease;
   }
-  100% {
-    stroke-dashoffset: 39;
-    opacity: 0;
-  }
-}
 
-@keyframes steamSmall {
-  10% {
-    stroke-dashoffset: 9;
-    opacity: 0.6;
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after,
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: themed("contentTextColor");
   }
-  80% {
-    stroke-dashoffset: 27;
-    opacity: 0;
-  }
-  100% {
-    stroke-dashoffset: 27;
-    opacity: 0;
-  }
-}
 
-@keyframes dots {
-  0%,
-  20% {
-    color: rgba(0, 0, 0, 0);
-    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
-  }
-  40% {
-    color: var(--primary);
-    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
-  }
-  60% {
-    text-shadow: 0.25em 0 0 var(--primary), 0.5em 0 0 rgba(0, 0, 0, 0);
-  }
-  80%,
-  100% {
-    text-shadow: 0.25em 0 0 var(--primary), 0.5em 0 0 var(--primary);
+  #___loader {
+    transition: background-color $theme-transition ease,
+      color $theme-transition ease;
+
+    .loadingScreen {
+      background-color: themed("backgroundColor");
+    }
   }
 }
