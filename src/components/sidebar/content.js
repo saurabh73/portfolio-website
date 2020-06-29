@@ -24,14 +24,14 @@ const SidebarContent = ({ children }) => {
       email
       image {
         asset {
-          fixed(height: 180, width: 180) {
+          fixed(height: 160, width: 160) {
             ...GatsbySanityImageFixed
           }
         }
       }
       contactQR {
         asset {
-          fixed(height: 180, width: 180) {
+          fixed(height: 160, width: 160) {
             ...GatsbySanityImageFixed
           }
         }
