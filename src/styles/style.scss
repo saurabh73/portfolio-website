@@ -111,6 +111,22 @@ button:focus {
   }
 }
 
+.image-wrapper {
+  position: relative;
+
+  .image,
+  .image-hover {
+    border-radius: 1.25rem;
+  }
+}
+.image-hover {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
 .overlay-menu__overlay {
   box-shadow: none;
 }

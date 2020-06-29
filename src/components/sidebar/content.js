@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStaticQuery, graphql } from "gatsby";
 import Style from "./sidebar.module.scss";
 import PropTypes from 'prop-types';
 import Img from "gatsby-image";
+import FileDownloader from "./../file-downloader";
 
 const SidebarContent = ({ children }) => {
   const [showQrCode, setShowQrCode] = useState(false);
@@ -37,21 +38,31 @@ const SidebarContent = ({ children }) => {
       }
       resume {
         asset {
+          id
           url
+          originalFilename
         }
       }
     }
   }`);
+
+  useEffect(() => {
+    console.log(data);
+  });
   return (
     <>
       <div className="text-center">
-        <Img
-          fixed={
-            showQrCode
-              ? data.sanityProfileSummary.contactQR.asset.fixed
-              : data.sanityProfileSummary.image.asset.fixed}
-          className={Style.image}
-        />
+        <div className={`${Style.image} image-wrapper`}>
+          <Img
+            fixed={data.sanityProfileSummary.image.asset.fixed}
+            className="image"
+          />
+          <Img
+            fixed={data.sanityProfileSummary.contactQR.asset.fixed}
+            className="image-hover" style={{ opacity: showQrCode ? 1 : 0 }}
+          />
+        </div>
+
         <h3 className="text-primary">{data.sanityProfileSummary.name}</h3>
         <p>{data.sanityProfileSummary.jobTitle}</p>
         <p>{data.sanityProfileSummary.email}</p>
@@ -73,19 +84,24 @@ const SidebarContent = ({ children }) => {
           <div className="d-flex justify-content-center align-items-center" style={{ height: 32, width: 32 }}>
             <i className="fab fa-lg fa-dev text-light"></i>
           </div>
-          <div className="d-flex justify-content-center align-items-center"
+          <div role="button" tabIndex={0}
+            className="d-flex justify-content-center align-items-center"
             style={{ height: 32, width: 32 }}
             onMouseEnter={() => setShowQrCode(true)}
             onMouseLeave={() => setShowQrCode(false)}
-            onClick={() => toggleQrCode()}>
+            onClick={() => toggleQrCode()}
+            onKeyPress={() => toggleQrCode()}>
             <i className="fas fa-lg fa-qrcode text-light"></i>
           </div>
         </div>
       </div>
       <div className="resume-section mt-3">
-        <a target="_blank" href={data.sanityProfileSummary.resume.asset.url} className="btn btn-primary btn-block py-3 box-border flip-right" download={`saurabh-dutta-resume-${new Date().toISOString().split('T')[0]}`}>
-          Download Resume
-          </a>
+        <FileDownloader
+          fileName={`${data.sanityProfileSummary.resume.asset.originalFilename.replace(".pdf", "")}-${new Date().toISOString().split('T')[0]}.pdf`}
+          classList={['btn', 'btn-primary', 'btn-block', 'py-3', 'box-border', 'flip-right']}
+          link={data.sanityProfileSummary.resume.asset.url}
+          title={"Download Resume"}
+        ></FileDownloader>
       </div>
     </>
   );
