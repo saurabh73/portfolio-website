@@ -3,7 +3,7 @@ import Style from "./sidebar.module.scss";
 import SidebarContent from "./content";
 const Sidebar = () => {
   const ref = useRef(null);
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState(250);
   const handleResize = () => {
     setWidth(ref.current.offsetWidth - 30);
   };
