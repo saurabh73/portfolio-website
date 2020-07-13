@@ -6,7 +6,6 @@
   $sun: #f2c559;
   $moon: #ffffff;
   @include flex-center();
-  // display: inline-flex;
   position: absolute;
   right: 0;
   top: calc(50% - 12px);
@@ -18,12 +17,13 @@
     &:checked {
       ~ .switch-label {
         transition: 0.5s all ease;
+        background-image: url(./../../images/day.jpg);
+        border: 1px solid $sun;
         .toggle {
-          $position: -6px;
+          $position: 0px;
           transform: translateX(($width * 0.5) + $position) rotate(90deg);
           background: $sun;
-          // box-shadow: 0px $position 0 0 $sun;
-          box-shadow: none;
+          box-shadow: 0px 0px 20px 0px $sun;
         }
       }
     }
@@ -34,24 +34,25 @@
     width: $width;
     height: $height;
     border-radius: $height;
-    border: 1px solid #cccccc;
+    border: 1px solid $moon;
     position: relative;
     cursor: pointer;
     transition: 1s all ease;
     margin-bottom: 0;
-
+    background-image: url(./../../images/night.jpg);
+    background-size: cover;
     .toggle {
       width: $height * 0.75;
       height: $height * 0.75;
-      $position: 6px;
+      $position: 0px;
       transition: 0.7s all ease;
       border-radius: $height;
-      background-color: transparent;
+      background-color: $moon;
       position: absolute;
-      left: 8px;
+      left: 2px;
       transition: 0.5s all ease;
       transform: rotate(90deg);
-      box-shadow: 0px 6px 0 0 $moon;
+      box-shadow: 0px 0px 20px 0px $moon;
     }
   }
 }
