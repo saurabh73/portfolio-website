@@ -31,7 +31,8 @@
     "react-dom": "^16.13.1",
     "react-hamburgers": "^1.0.0",
     "react-helmet": "^5.2.1",
-    "react-overlay-menu": "^1.0.0"
+    "react-overlay-menu": "^1.0.0",
+    "simple-icons": "^3.4.0"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
