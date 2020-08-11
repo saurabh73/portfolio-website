@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useStaticQuery, graphql } from "gatsby";
 import Style from "./sidebar.module.scss";
 import PropTypes from 'prop-types';
@@ -10,7 +10,6 @@ const SidebarContent = ({ children }) => {
   const data = useStaticQuery(graphql`{
     sanityProfileSummary {
       id
-      bio
       name
       socialLinks {
         domain
@@ -27,13 +26,6 @@ const SidebarContent = ({ children }) => {
           }
         }
       }
-      contactQR {
-        asset {
-          fixed(height: 160, width: 160) {
-            ...GatsbySanityImageFixed
-          }
-        }
-      }
       resume {
         asset {
           id
@@ -43,8 +35,6 @@ const SidebarContent = ({ children }) => {
       }
     }
   }`);
-
-  useEffect(() => { });
   return (
     <>
       <div className="text-center">
@@ -71,8 +61,8 @@ const SidebarContent = ({ children }) => {
               className="d-flex justify-content-center align-items-center"
               style={{ height: 32, width: 32 }}>
               <Icon
+                className="social-icon"
                 size={20}
-                color="#fff"
                 style={{}}
                 path={simpleIcons[item.iconTitle]["path"]}>
               </Icon>

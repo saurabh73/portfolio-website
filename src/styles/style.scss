@@ -197,6 +197,19 @@ button:focus {
     transition: background-color $theme-transition ease;
   }
 
+  .social-icon {
+    path {
+      transition: fill 0.3s ease-in-out;
+      fill: themed("contentTextColor") !important;
+    }
+
+    &:hover {
+      path {
+        fill: $primary !important;
+      }
+    }
+  }
+
   .page-menu {
     .nav-item {
       a {
