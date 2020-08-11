@@ -22,7 +22,7 @@ const Sidebar = () => {
   return (
     <aside className="col-12 col-md-12 col-lg-4 col-xl-3" ref={ref}>
       <div
-        className={`${Style.sidebar} box shadow flip-right mb-4`}
+        className={`${Style.sidebar} box shadow flip-right mb-3`}
         style={{ width: `${width}px` }}
       >
         <SidebarContent></SidebarContent>
