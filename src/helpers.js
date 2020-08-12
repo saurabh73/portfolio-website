@@ -1,3 +1,4 @@
+import { format, parseISO } from 'date-fns';
 const Helpers = {
   // Main wrapper for Fetch API
   httpRequest: (url, method, payload, headers) => {
@@ -38,5 +39,17 @@ const Helpers = {
       return Promise.reject(response);
     });
   },
+
+  parseDate: (dateString, formatPattern) => {
+    if (dateString) {
+      try {
+        const dateValue = parseISO(dateString);
+        return format(dateValue, formatPattern);
+      } catch (e) {
+        return "";
+      }
+    }
+    return "Current";
+  }
 };
 export default Helpers;

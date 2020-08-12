@@ -1,30 +1,51 @@
 import React from "react";
-
+import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import WorkExperience from "../components/work-experience";
+export const query = graphql`
+  {
+    sanityProfileSummary {
+      id
+      bio
+      workExperiences {
+        company
+        link
+        designation
+        description
+        startDate
+        endDate
+        logo {
+          asset {
+            fixed(height: 100, width: 100) {
+              ...GatsbySanityImageFixed
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 const IndexPage = () => {
   const pageName = "home";
+  const data = useStaticQuery(query);
+  const totalExperience = new Date(new Date() - new Date("2014/10/01")).getFullYear() - 1970;
+  console.log(data);
   return (
     <Layout page={pageName}>
       <SEO title={"/" + pageName} />
       <div className="box">
-        <h1>Test</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, officia
-          architecto? Ipsa ea commodi, fugiat dolorum neque necessitatibus
-          laborum sunt quo ullam aut nostrum nihil labore optio atque obcaecati
-          ipsum.
-        </p>
+        <h1 className="title">About Me</h1>
+        {data.sanityProfileSummary.bio.split("\n").map((t, i) => (<p key={i}>{t.trim()}</p>))}
       </div>
       <div className="box">
-        <h1>Test</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, officia
-          architecto? Ipsa ea commodi, fugiat dolorum neque necessitatibus
-          laborum sunt quo ullam aut nostrum nihil labore optio atque obcaecati
-          ipsum.
-        </p>
+        <h1 className="title">Work Experience <span className="subTitle">({totalExperience} years)</span></h1>
+
+        {data.sanityProfileSummary.workExperiences.map((experience) => (
+          <WorkExperience experience={experience}></WorkExperience>
+        ))}
+
       </div>
       <div className="box">
         <h1>Test</h1>
