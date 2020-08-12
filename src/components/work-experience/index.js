@@ -5,10 +5,7 @@ import Img from "gatsby-image";
 const WorkExperience = ({ experience }) => {
   return (
     <div className="py-3">
-      <h3>{experience.designation} <span style={{ "fontSize": "1rem" }}>
-        {Helpers.parseDate(experience.startDate, "MMM yyyy")} - {Helpers.parseDate(experience.endDate, "MMM yyyy")}</span>
-      </h3>
-
+      <h4>{experience.designation}</h4>
       <div className="media">
         <Img
           alt={experience.company + 'Logo'}
@@ -16,7 +13,8 @@ const WorkExperience = ({ experience }) => {
           className="mr-3 bg-white rounded"
         />
         <div class="media-body">
-          <h5 class="mt-0"><a href={experience.link}>{experience.company}</a></h5>
+          <h4 class="mt-0"><a href={experience.link}>{experience.company}</a></h4>
+          <h6 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>{Helpers.parseDate(experience.startDate, "MMM yyyy")} - {Helpers.parseDate(experience.endDate, "MMM yyyy")}</h6>
           {experience.description.split("\n").map((t, i) => (<p key={i}>{t.trim()}</p>))}
         </div>
       </div>

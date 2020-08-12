@@ -45,10 +45,9 @@ const IndexPage = () => {
         {data.sanityProfileSummary.workExperiences.map((experience) => (
           <WorkExperience experience={experience}></WorkExperience>
         ))}
-
       </div>
       <div className="box">
-        <h1>Test</h1>
+        <h1 className="title">Technologies &amp; Frameworks</h1>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur
           ipsa animi quos fugit assumenda soluta minima rem qui voluptate
