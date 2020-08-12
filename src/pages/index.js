@@ -17,8 +17,8 @@ export const query = graphql`
         endDate
         logo {
           asset {
-            fixed(height: 100, width: 100) {
-              ...GatsbySanityImageFixed
+            fluid(maxWidth: 300) {
+              ...GatsbySanityImageFluid
             }
           }
         }

@@ -197,6 +197,24 @@ button:focus {
   }
 }
 
+.work-experience {
+  .company-logo {
+    width: 100%;
+    height: 250px;
+    @include media-breakpoint-up(sm) {
+      height: 100px;
+      width: 100px;
+    }
+  }
+
+  .media {
+    flex-direction: column;
+    @include media-breakpoint-up(sm) {
+      flex-direction: row;
+    }
+  }
+}
+
 // Only Theme related
 @include themify($themes) {
   color: themed("contentTextColor");

@@ -4,13 +4,13 @@ import Helpers from './../../helpers';
 import Img from "gatsby-image";
 const WorkExperience = ({ experience }) => {
   return (
-    <div className="py-3">
+    <div className="py-3 work-experience">
       <h4>{experience.designation}</h4>
       <div className="media">
         <Img
           alt={experience.company + 'Logo'}
-          fixed={experience.logo.asset.fixed}
-          className="mr-3 bg-white rounded"
+          fixed={experience.logo.asset.fluid}
+          className="mr-3 mb-3 bg-white rounded company-logo"
         />
         <div class="media-body">
           <h4 class="mt-0"><a href={experience.link}>{experience.company}</a></h4>
