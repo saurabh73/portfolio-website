@@ -9,7 +9,7 @@ const WorkExperience = ({ experience }) => {
       <div className="media">
         <Img
           alt={experience.company + 'Logo'}
-          fixed={experience.logo.asset.fluid}
+          fluid={experience.logo.asset.fluid}
           className="mr-3 mb-3 bg-white rounded company-logo"
         />
         <div class="media-body">
