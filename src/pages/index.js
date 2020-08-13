@@ -26,10 +26,11 @@ export const query = graphql`
       }
       technologies {
         name
+        category
         image {
           asset {
-            fixed(width: 100, height: 100) {
-              ...GatsbySanityImageFixed
+            fluid(maxWidth: 100)  {
+              ...GatsbySanityImageFluid
             }
           }
         }
@@ -60,11 +61,23 @@ const IndexPage = () => {
       <div className="box">
         <h1 className="title">Technologies &amp; Frameworks</h1>
         <div className="technologies-grid py-3">
-          {data.sanityProfileSummary.technologies.map((technology, index) => (
+          {data.sanityProfileSummary.technologies.sort((a, b) => {
+            const catA = a.category ? a.category : "";
+            const catB = b.category ? b.category : "";
+            return catA.localeCompare(catB);
+          }).map((technology, index) => (
             <div key={index} className="card bg-transparent border-0" style={{ "width": "100%" }} >
               <Img
-                className="card-img-top"
-                fixed={technology.image.asset.fixed}
+                className="card-img-top bg-white rounded"
+                fluid={technology.image.asset.fluid}
+                style={{
+                  width: "100px",
+                  height: "100px",
+                }}
+                imgStyle={{
+                  objectFit: "contain",
+                  padding: "5px"
+                }}
                 alt="Card image cap">
               </Img>
               <div className="card-body">
