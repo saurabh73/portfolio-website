@@ -12,8 +12,8 @@ const WorkExperience = ({ experience }) => {
           fluid={experience.logo.asset.fluid}
           className="mr-3 mb-3 bg-white rounded company-logo"
         />
-        <div class="media-body">
-          <h4 class="mt-0"><a href={experience.link}>{experience.company}</a></h4>
+        <div className="media-body">
+          <h4 className="mt-0"><a href={experience.link}>{experience.company}</a></h4>
           <h6 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>{Helpers.parseDate(experience.startDate, "MMM yyyy")} - {Helpers.parseDate(experience.endDate, "MMM yyyy")}</h6>
           {experience.description.split("\n").map((t, i) => (<p key={i}>{t.trim()}</p>))}
         </div>
