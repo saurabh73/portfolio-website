@@ -10,7 +10,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-transition-link`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
@@ -43,6 +42,9 @@ module.exports = {
         watchMode: true,
         overlayDrafts: true
       }
+    },
+    {
+      resolve: "gatsby-plugin-transition-link"
     },
   ],
 };
