@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import SidebarContent from "./../sidebar/content";
 const PageMenu = ({ activePage, isVertical }) => {
   const routes = {
@@ -21,9 +22,9 @@ const PageMenu = ({ activePage, isVertical }) => {
   const menu = <ul className={`page-menu nav ${isVertical ? "nav-mobile" : "flex-row"}`}>
     {Object.keys(routes).map(key => (
       <li className={`nav-item ${addActiveClass(key)}`.trim()} key={key}>
-        <Link className="nav-link" to={routes[key]}>
+        <AniLink cover className="nav-link" to={routes[key]} duration={1} bg="#000099">
           /{key}
-        </Link>
+        </AniLink>
       </li>
     ))}
   </ul>;
