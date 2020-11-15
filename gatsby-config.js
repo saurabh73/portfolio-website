@@ -11,6 +11,12 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
+    {
+      resolve: 'gatsby-plugin-page-transitions',
+      options: {
+        transitionTime: 500
+      }
+    },
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-dark-mode`,
@@ -42,9 +48,6 @@ module.exports = {
         watchMode: true,
         overlayDrafts: true
       }
-    },
-    {
-      resolve: "gatsby-plugin-transition-link"
     },
   ],
 };

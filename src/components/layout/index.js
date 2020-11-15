@@ -7,7 +7,7 @@
 
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-
+import PageTransition from 'gatsby-plugin-page-transitions';
 import Sidebar from "./../sidebar";
 import Content from "./../content";
 import Footer from "./../footer";
@@ -37,7 +37,7 @@ const Layout = ({ children, page }) => {
   });
 
   return (
-    <>
+    <PageTransition>
       <Header
         activePage={page}
         menuStateActive={isMenuActive}
@@ -55,7 +55,7 @@ const Layout = ({ children, page }) => {
         </div>
       </main>
       <Footer></Footer>
-    </>
+    </PageTransition>
   );
 };
 
