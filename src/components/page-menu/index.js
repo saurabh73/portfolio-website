@@ -21,7 +21,7 @@ const PageMenu = ({ activePage, isVertical }) => {
   const menu = <ul className={`page-menu nav ${isVertical ? "nav-mobile" : "flex-row"}`}>
     {Object.keys(routes).map(key => (
       <li className={`nav-item ${addActiveClass(key)}`.trim()} key={key}>
-        <Link paintDrip className="nav-link" to={routes[key]} color="rebeccapurple">
+        <Link className="nav-link" to={routes[key]}>
           /{key}
         </Link>
       </li>
