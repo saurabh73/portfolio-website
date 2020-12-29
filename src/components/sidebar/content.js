@@ -8,29 +8,25 @@ import Icon from './../icon';
 
 const SidebarContent = ({ children }) => {
   const data = useStaticQuery(graphql`{
-    sanityProfileSummary {
+    profile: sanityResume {
       id
-      name
-      socialLinks {
-        domain
-        handle
-        link
-        iconTitle
-      }
-      jobTitle
-      email
-      image {
-        asset {
-          fixed(height: 160, width: 160) {
-            ...GatsbySanityImageFixed
-          }
-        }
-      }
-      resume {
-        asset {
-          id
+      basics {
+        name
+        profiles {
+          network
           url
-          originalFilename
+          username
+          iconLink
+          iconTheme
+        }
+        label
+        email
+        picture {
+          asset {
+            fixed(height: 160, width: 160) {
+              ...GatsbySanityImageFixed
+            }
+          }
         }
       }
     }
@@ -40,22 +36,22 @@ const SidebarContent = ({ children }) => {
       <div className="text-center">
         <div className={`${Style.image} image-wrapper`}>
           <Img
-            fixed={data.sanityProfileSummary.image.asset.fixed}
+            fixed={data.profile.basics.picture.asset.fixed}
             className="image"
           />
         </div>
-        <h3 className="text-primary">{data.sanityProfileSummary.name}</h3>
-        <p>{data.sanityProfileSummary.jobTitle}</p>
-        <a href={'mailto:' + data.sanityProfileSummary.email}>{data.sanityProfileSummary.email}</a>
+        <h3 className="text-primary">{data.profile.basics.name}</h3>
+        <p>{data.profile.basics.label}</p>
+        <a href={'mailto:' + data.profile.basics.email}>{data.profile.basics.email}</a>
       </div>
 
       <>{children}</>
 
       <div className="contact-content my-3">
         <div className="row mx-0 justify-content-between">
-          {data.sanityProfileSummary.socialLinks.map((item, index) => (
+          {data.profile.basics.profiles.map((item, index) => (
             <a
-              href={item.link}
+              href={item.url}
               target="__blank"
               key={index}
               className="d-flex justify-content-center align-items-center"
@@ -64,7 +60,7 @@ const SidebarContent = ({ children }) => {
                 className="social-icon"
                 size={20}
                 style={{}}
-                path={simpleIcons[item.iconTitle]["path"]}>
+                path={simpleIcons.get(item.network)["path"]}>
               </Icon>
             </a>
           ))}
@@ -72,7 +68,7 @@ const SidebarContent = ({ children }) => {
       </div>
       <div className="resume-section mt-3">
         <a className='btn btn-primary btn-block p-3 box-border'
-          download={`${data.sanityProfileSummary.resume.asset.originalFilename.replace(".pdf", "")}-${new Date().toISOString().split('T')[0]}.pdf`} target="__blank" href={data.sanityProfileSummary.resume.asset.url} >
+          download="resume.pdf" target="__blank" href="https://cdn.sanity.io/files/9tpjt9dg/production/f89fd373e023fbc4381fab91c5896629f9ce6901.pdf" >
           <i className="fas fa-download px-1"></i> Download Resume
         </a>
       </div>

@@ -7,7 +7,7 @@
 
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import PageTransition from 'gatsby-plugin-page-transitions';
+import PageTransition from 'gatsby-v2-plugin-page-transitions';
 import Sidebar from "./../sidebar";
 import Content from "./../content";
 import Footer from "./../footer";

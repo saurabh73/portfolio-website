@@ -12,7 +12,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     {
-      resolve: 'gatsby-plugin-page-transitions',
+      resolve: 'gatsby-v2-plugin-page-transitions',
       options: {
         transitionTime: 500
       }
@@ -48,6 +48,23 @@ module.exports = {
         watchMode: true,
         overlayDrafts: true
       }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: "UA-62661207-1",
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: false,
+        // Setting this parameter is optional
+        anonymize: true,
+        // Setting this parameter is also optional
+        respectDNT: true,
+        // Delays sending pageview hits on route update (in milliseconds)
+        pageTransitionDelay: 400,
+        // Defers execution of google analytics script after page load
+        defer: true,
+      },
     },
   ],
 };

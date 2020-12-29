@@ -4,20 +4,22 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import WorkExperience from "../components/work-experience";
 import Img from "gatsby-image";
-
-
+import Helpers from './../helpers';
 export const query = graphql`
   {
-    profile: sanityProfileSummary {
+    profile: sanityResume {
       id
-      bio
-      workExperiences {
+      basics {
+        summary
+      }
+      work {
         company
-        link
-        designation
-        description
+        website
+        highlights
         startDate
         endDate
+        position
+        summary
         logo {
           asset {
             fluid(maxWidth: 300) {
@@ -34,7 +36,6 @@ export const query = graphql`
       ...SanityTechnologyConnectionFragment
     }
   }
-  
   fragment SanityTechnologyConnectionFragment on SanityTechnologyConnection {
     totalCount
     nodes {
@@ -50,7 +51,6 @@ export const query = graphql`
           }
         }
       }
-      endDate(formatString: "YYYY-MM")
     }
   }
 
@@ -66,30 +66,32 @@ const IndexPage = () => {
       <SEO title={"/" + pageName} />
       <div className="box">
         <h1 className="title">About Me</h1>
-        {data.profile.bio.split("\n").map((t, i) => (<p key={i}>{t.trim()}</p>))}
+        {data.profile.basics.summary.split("\n").map((t, i) => (<p key={i}>{t.trim()}</p>))}
       </div>
       <div className="box">
-        <h1 className="title">Work Experience <span className="subTitle">({totalExperience} years)</span></h1>
-
-        {data.profile.workExperiences.map((experience, index) => (
-          <WorkExperience key={index} experience={experience}></WorkExperience>
-        ))}
+        <h1 className="title">Work Experience</h1>
+        <div className="work-experience-container">
+          {data.profile.work.map((experience, index) => (
+            <WorkExperience key={index} experience={experience}></WorkExperience>
+          ))}
+        </div>
       </div>
       <div className="box">
-        <h1 className="title">Technologies &amp; Frameworks</h1>
+        <h1 className="title">Technical Skills</h1>
         <div className="technologies-grid py-3">
           {data.languages.nodes.map((technology) => (
             <div key={technology.id} className="card bg-transparent border-0" style={{ "width": "100%" }} >
               <Img
-                className="card-img-top bg-white rounded"
+                className="card-img-top rounded"
                 fluid={technology.image.asset.fluid}
                 style={{
-                  width: "100px",
-                  height: "100px",
+                  width: "96px",
+                  height: "96px",
+                  backgroundColor: "rgba(150,150,150,0.1)"
                 }}
                 imgStyle={{
                   objectFit: "contain",
-                  padding: "5px"
+                  padding: "16px"
                 }}
                 alt="Card image cap">
               </Img>
