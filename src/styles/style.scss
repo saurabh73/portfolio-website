@@ -34,9 +34,10 @@ p {
 }
 
 .subTitle {
-  margin-top: -0.5rem;
+  // margin-top: 3rem;
+  margin-bottom: 0px;
   font-weight: 100;
-  float: right;
+  // float: right;
 }
 
 main {
@@ -117,6 +118,7 @@ button:focus {
   height: 140px;
   max-width: 100%;
   font-size: 1.5rem;
+  align-items: center;
   // flex-wrap: wrap;
   .nav-item {
     display: flex;

@@ -6,8 +6,8 @@ const PageMenu = ({ activePage, isVertical }) => {
   const routes = {
     home: "/",
     portfolio: "/portfolio",
-    uses: "/uses",
-    blog: "/blog",
+    // uses: "/uses",
+    // blog: "/blog",
   };
 
   const addActiveClass = page => {

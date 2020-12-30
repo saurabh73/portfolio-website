@@ -3,8 +3,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import WorkExperience from "../components/work-experience";
-import Img from "gatsby-image";
-import Helpers from './../helpers';
+import TechnologyTile from "../components/technology-tile";
+
 export const query = graphql`
   {
     profile: sanityResume {
@@ -29,10 +29,25 @@ export const query = graphql`
         }
       }
     }
-    languages: allSanityTechnology(sort: {fields: proficiency, order: DESC}, filter: {category: {eq: "language"}}) {
+    languages: allSanityTechnology(filter: {showBadge: {eq: true}, category: {eq: "language"}}) {
       ...SanityTechnologyConnectionFragment
     }
-    tools: allSanityTechnology(sort: {fields: proficiency, order: DESC}, filter: {category: {eq: "tools"}}) {
+    platforms: allSanityTechnology(filter: {showBadge: {eq: true}, stackCategory: {eq: "platform"}}) {
+      ...SanityTechnologyConnectionFragment
+    }
+    frontend: allSanityTechnology(filter: {showBadge: {eq: true}, stackCategory: {eq: "frontend"}}) {
+      ...SanityTechnologyConnectionFragment
+    }
+    backend: allSanityTechnology(filter: {showBadge: {eq: true}, stackCategory: {eq: "backend"}}) {
+      ...SanityTechnologyConnectionFragment
+    }
+    database: allSanityTechnology(filter: {showBadge: {eq: true}, stackCategory: {eq: "database"}}) {
+      ...SanityTechnologyConnectionFragment
+    }
+    tools: allSanityTechnology(filter: {showBadge: {eq: true}, category: {eq: "tools"}}) {
+      ...SanityTechnologyConnectionFragment
+    }
+    buildTools: allSanityTechnology(filter: {showBadge: {eq: true}, category: {eq: "build tool"}}) {
       ...SanityTechnologyConnectionFragment
     }
   }
@@ -78,50 +93,49 @@ const IndexPage = () => {
       </div>
       <div className="box">
         <h1 className="title">Technical Skills</h1>
-        <div className="technologies-grid py-3">
-          {data.languages.nodes.map((technology) => (
-            <div key={technology.id} className="card bg-transparent border-0" style={{ "width": "100%" }} >
-              <Img
-                className="card-img-top rounded"
-                fluid={technology.image.asset.fluid}
-                style={{
-                  width: "96px",
-                  height: "96px",
-                  backgroundColor: "rgba(150,150,150,0.1)"
-                }}
-                imgStyle={{
-                  objectFit: "contain",
-                  padding: "16px"
-                }}
-                alt="Card image cap">
-              </Img>
-              <div className="card-body">
-                <h6 className="card-title">{technology.name}</h6>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="technologies-grid py-3">
-          {data.tools.nodes.map((technology) => (
-            <div key={technology.id} className="card bg-transparent border-0" style={{ "width": "100%" }} >
-              <Img
-                className="card-img-top bg-white rounded"
-                fluid={technology.image.asset.fluid}
-                style={{
-                  width: "100px",
-                  height: "100px",
-                }}
-                imgStyle={{
-                  objectFit: "contain",
-                  padding: "5px"
-                }}
-                alt="Card image cap">
-              </Img>
-              <div className="card-body">
-                <h6 className="card-title">{technology.name}</h6>
-              </div>
-            </div>
-          ))}
+        <div className="mt-5">
+          {/* Languages */}
+          <h3 className="subTitle">Languages</h3>
+          <div className="technologies-grid py-3">
+            {data.languages.nodes.map((technology) => (
+              <TechnologyTile technology={technology}></TechnologyTile>
+            ))}
+          </div>
+
+          <h3 className="subTitle">Backend</h3>
+          <div className="technologies-grid py-3">
+            {data.backend.nodes.map((technology) => (
+              <TechnologyTile technology={technology}></TechnologyTile>
+            ))}
+          </div>
+
+          <h3 className="subTitle">Frontend</h3>
+          <div className="technologies-grid py-3">
+            {data.frontend.nodes.map((technology) => (
+              <TechnologyTile technology={technology}></TechnologyTile>
+            ))}
+          </div>
+
+          <h3 className="subTitle">Database</h3>
+          <div className="technologies-grid py-3">
+            {data.database.nodes.map((technology) => (
+              <TechnologyTile technology={technology}></TechnologyTile>
+            ))}
+          </div>
+
+          <h3 className="subTitle">Platforms</h3>
+          <div className="technologies-grid py-3">
+            {data.platforms.nodes.map((technology) => (
+              <TechnologyTile technology={technology}></TechnologyTile>
+            ))}
+          </div>
+
+          <h3 className="subTitle">Tools</h3>
+          <div className="technologies-grid py-3">
+            {data.tools.nodes.concat(data.buildTools.nodes).map((technology) => (
+              <TechnologyTile technology={technology}></TechnologyTile>
+            ))}
+          </div>
         </div>
       </div>
     </Layout >
