@@ -4,7 +4,7 @@ import Img from "gatsby-image";
 
 const TechnologyTile = ({ technology }) => {
   return (
-    <div key={technology.id} className="card bg-transparent border-0 px-1" style={{ "width": "100%" }} >
+    <div className="card hvr-grow bg-transparent border-0 px-1" style={{ "width": "100%" }} >
       {technology.image && technology.image.asset.fluid && <Img
         className="card-img-top rounded"
         fluid={technology.image.asset.fluid}
@@ -32,7 +32,7 @@ TechnologyTile.propTypes = {
     name: PropTypes.string.isRequired,
     category: PropTypes.string,
     stackCategory: PropTypes.string,
-    proficiency: PropTypes.number.isRequired,
+    proficiency: PropTypes.number,
     startDate: PropTypes.string,
     endDate: PropTypes.string,
     image: PropTypes.object,

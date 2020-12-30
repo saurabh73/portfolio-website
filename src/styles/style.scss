@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 @import "common";
+@import "fonts";
 
 @import "~bootstrap/scss/bootstrap";
 @import "~hamburgers/_sass/hamburgers/hamburgers.scss";
@@ -30,13 +30,13 @@ p {
     background-color: $primary;
   }
   margin-bottom: 1rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .subTitle {
   // margin-top: 3rem;
   margin-bottom: 0px;
-  font-weight: 100;
+  font-weight: 300;
   // float: right;
 }
 
@@ -61,7 +61,7 @@ header {
   .mobile-page-name {
     padding-left: 1rem;
     font-size: 1.5rem;
-    font-family: monospace;
+    font-family: $font-family-monospace;
     line-height: 2;
   }
 }
@@ -97,7 +97,7 @@ button:focus {
 
 .page-menu {
   .nav-link {
-    font-family: monospace;
+    font-family: $font-family-monospace;
   }
   .nav-item {
     font-size: 1.2rem;
@@ -208,7 +208,6 @@ button:focus {
   }
   .work-experience {
     padding: 0 0 24px 0px;
-    cursor: pointer;
     @include media-breakpoint-up(sm) {
       border-left: 1px dashed #999999;
       padding: 0 0 24px 16px;
@@ -245,13 +244,6 @@ button:focus {
     &:last-child {
       padding-bottom: 0px;
     }
-
-    &:hover {
-      .work-item {
-        background-color: rgba(153, 153, 153, 0.1);
-        transition: all 300ms ease-in-out;
-      }
-    }
   }
 }
 
@@ -263,13 +255,35 @@ button:focus {
   row-gap: 10px;
 }
 
+.hvr-* {
+  cursor: pointer;
+}
+
 // Only Theme related
 @include themify($themes) {
   color: themed("contentTextColor");
   background-color: themed("backgroundColor");
 
   a {
-    color: var(--primary);
+    color: $primary;
+    font-weight: 400;
+    transition: all 300ms ease-in-out;
+    &:hover {
+      font-weight: bold;
+    }
+  }
+
+  a.btn-resume {
+    box-shadow: 0px 15px 20px themed("shadowColor");
+    transition: all 300ms ease-in-out;
+    background-color: rgba(153, 153, 153, 0.1);
+    color: themed("contentTextColor");
+    font-weight: bold;
+
+    &:hover {
+      background-color: themed("contentTextColor");
+      color: themed("contentBackgroundColor");
+    }
   }
 
   .company-link {
@@ -294,7 +308,7 @@ button:focus {
 
   .subTitle {
     color: themed("contentTextColor") !important;
-    // font-family: monospace;
+    // font-family: $font-family-monospace;
     font-size: 1.5rem;
   }
 

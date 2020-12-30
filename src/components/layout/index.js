@@ -37,6 +37,9 @@ const Layout = ({ children, page }) => {
     });
   });
 
+  function closeMenu() {
+  }
+
   return (
     <PageTransition>
       <Header
@@ -44,7 +47,7 @@ const Layout = ({ children, page }) => {
         menuStateActive={isMenuActive}
         setIsMenuActive={setIsMenuActive}>
       </Header>
-      <OverlayMenu open={isMenuActive}>
+      <OverlayMenu open={isMenuActive} onClose={closeMenu}>
         <PageMenu activePage={page} isVertical={true}></PageMenu>
       </OverlayMenu>
       <main>
@@ -68,5 +71,7 @@ Layout.propTypes = {
 Layout.defaultProps = {
   page: ``,
 };
+
+
 
 export default Layout;

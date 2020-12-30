@@ -20,7 +20,7 @@ const PageMenu = ({ activePage, isVertical }) => {
 
   const menu = <ul className={`page-menu nav ${isVertical ? "nav-mobile" : "flex-row"}`}>
     {Object.keys(routes).map(key => (
-      <li className={`nav-item ${addActiveClass(key)}`.trim()} key={key}>
+      <li className={`nav-item hvr-grow ${addActiveClass(key)}`.trim()} key={key}>
         <Link className="nav-link" to={routes[key]}>
           /{key}
         </Link>

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Img from "gatsby-image";
 import simpleIcons from 'simple-icons';
 import Icon from './../icon';
+import resumeFile from './../../files/saurabh-dutta-resume.pdf'
 
 const SidebarContent = ({ children }) => {
   const data = useStaticQuery(graphql`{
@@ -67,8 +68,8 @@ const SidebarContent = ({ children }) => {
         </div>
       </div>
       <div className="resume-section mt-3">
-        <a className='btn btn-primary btn-block p-3 box-border'
-          download="resume.pdf" target="__blank" href="https://cdn.sanity.io/files/9tpjt9dg/production/f89fd373e023fbc4381fab91c5896629f9ce6901.pdf" >
+        <a className='btn btn-resume hvr-underline-from-center btn-block p-3'
+          href={resumeFile} download>
           <i className="fas fa-download px-1"></i> Download Resume
         </a>
       </div>
