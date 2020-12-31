@@ -20,11 +20,13 @@ $themes: (
 
 // Bootstrap Variables
 $primary: #158ff3;
+$dark: #3f3855;
 $activeColor: $primary;
 $font-family-sans-serif: "HK Grotesk", sans-serif;
 $font-family-monospace: "Anonymous Pro", monospace;
 $theme-colors: (
   "primary": $primary,
+  "dark": $dark,
 );
 $hamburger-padding-x: 0px;
 $hamburger-padding-y: 5px;

@@ -56,5 +56,18 @@ const PortfolioCard = ({ portfolio }) => {
   );
 }
 
+PortfolioCard.propTypes = {
+  portfolio: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    tags: PropTypes.array,
+    role: PropTypes.string,
+    link: PropTypes.string,
+    background: PropTypes.string,
+    image: PropTypes.object,
+    showBadge: PropTypes.bool
+  }).isRequired
+};
 
 export default PortfolioCard;

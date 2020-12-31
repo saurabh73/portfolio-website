@@ -36,7 +36,7 @@ const PortfolioPage = () => {
         <h1 className="title">Projects</h1>
 
         {data.portfolio.nodes.map((portfolio) => (
-          <PortfolioCard portfolio={portfolio} />
+          <PortfolioCard key={portfolio.id} portfolio={portfolio} />
         ))}
       </div>
     </Layout>
