@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import Img from "gatsby-image";
 import simpleIcons from 'simple-icons';
 import Icon from './../icon';
-import resumeFile from './../../files/saurabh-dutta-resume.pdf'
 
 const SidebarContent = ({ children }) => {
   const data = useStaticQuery(graphql`{
@@ -30,6 +29,10 @@ const SidebarContent = ({ children }) => {
           }
         }
       }
+    }
+    resume: file(name: {eq: "saurabh-dutta-resume"}, relativeDirectory: {in: "files"}) {
+      id
+      publicURL
     }
   }`);
   return (
@@ -69,7 +72,7 @@ const SidebarContent = ({ children }) => {
       </div>
       <div className="resume-section mt-3">
         <a className='btn btn-resume hvr-underline-from-center btn-block p-3'
-          href={resumeFile} download>
+          href={data.resume.publicURL} download>
           <i className="fas fa-download px-1"></i> Download Resume
         </a>
       </div>

@@ -17,7 +17,7 @@
     &:checked {
       ~ .switch-label {
         transition: 0.5s all ease;
-        background-image: url(./../../images/day.jpg);
+        background-image: url(./../../assets/images/day.jpg);
         border: 1px solid $sun;
         .toggle {
           $position: 0px;
@@ -39,7 +39,7 @@
     cursor: pointer;
     transition: 1s all ease;
     margin-bottom: 0;
-    background-image: url(./../../images/night.jpg);
+    background-image: url(./../../assets/images/night.jpg);
     background-size: cover;
     .toggle {
       width: $height * 0.75;

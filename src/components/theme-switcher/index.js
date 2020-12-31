@@ -1,7 +1,6 @@
 import React from "react";
 import Style from "./theme-switcher.module.scss";
 import { ThemeToggler } from "gatsby-plugin-dark-mode";
-
 const ThemeSwitcher = () => {
   return (
     <ThemeToggler>

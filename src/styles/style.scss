@@ -255,8 +255,79 @@ button:focus {
   row-gap: 10px;
 }
 
-.hvr-* {
-  cursor: pointer;
+.portfolio-card {
+  border: none;
+  background: none;
+
+  .portfolio-image-card {
+    z-index: 1;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+
+  .portfolio-body {
+    background: rgba(153, 153, 153, 0.1);
+    // border-bottom-left-radius: 0.5rem;
+    // border-bottom-right-radius: 0.5rem;
+
+    .card-title {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      font-family: "HK Grotesk Bold";
+      color: $primary;
+    }
+
+    .project-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portfolio-summary {
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-family: "HK Grotesk Bold";
+    }
+
+    .portfolio-aside-list {
+      padding-left: 0;
+      margin-bottom: 0;
+      justify-self: flex-end;
+      align-self: flex-end;
+      width: 100%;
+
+      li {
+        display: flex;
+        padding: 5px 0;
+        border-bottom: 1px solid #999999;
+        font-size: 18px;
+
+        .t-left {
+          flex: 0 0 60px;
+          text-align: left;
+          font-family: "HK Grotesk Light";
+        }
+
+        .t-right {
+          text-align: left;
+          margin-left: 5px;
+          margin-right: 5px;
+          font-family: "HK Grotesk Medium";
+        }
+        &:last-child {
+          border-bottom: unset;
+        }
+
+        .t-right.cate-link {
+          margin-left: 0;
+          .badge {
+            margin-left: 5px;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
 }
 
 // Only Theme related
@@ -282,6 +353,30 @@ button:focus {
 
     &:hover {
       background-color: themed("contentTextColor");
+      color: themed("contentBackgroundColor");
+    }
+  }
+
+  .readmore.container {
+    padding: 0;
+
+    .readmore.overhang {
+      background: none !important;
+    }
+  }
+
+  .readmore.container + button {
+    background-color: rgba(153, 153, 153, 0.1);
+    border: none;
+    padding: 8px;
+    color: $primary;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  .portfolio-body {
+    .badge {
+      background-color: themed("headerTextColor");
       color: themed("contentBackgroundColor");
     }
   }
