@@ -30,13 +30,27 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Saurabh Dutta`,
+        short_name: `SD`,
+        description: 'Personal portfolio site of Saurabh Dutta',
+        lang: 'en',
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/assets/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        background_color: `#00000`,
+        theme_color: `#ffffff`,
+        display: `standalone`,
+        icon: `src/assets/images/logo.png`,
+        icons: [
+          {
+            src: "src/assets/images/android-chrome-192x192.png",
+            sizes: "192x192",
+            type: "image/png"
+          },
+          {
+            src: "src/assets/images/android-chrome-256x256.png",
+            sizes: "256x256",
+            type: "image/png"
+          }
+        ],
       },
     },
     {

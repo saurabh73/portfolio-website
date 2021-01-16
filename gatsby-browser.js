@@ -6,7 +6,7 @@
 
 // You can delete this file if you're not using it
 import "./src/styles/style.scss";
-const transitionDelay = 500;
+const transitionDelay = 10;
 
 export const onInitialClientRender = () => {
   setTimeout(function () {
