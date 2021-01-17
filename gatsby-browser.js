@@ -19,8 +19,13 @@ export const shouldUpdateScroll = ({
   routerProps: { location },
   getSavedScrollPosition
 }) => {
+  console.log(location);
   if (location.action === "PUSH") {
-    window.setTimeout(() => window.scrollTo(0, 0), transitionDelay);
+    window.setTimeout(() => window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    }), transitionDelay);
   } else {
     const savedPosition = getSavedScrollPosition(location);
     window.setTimeout(

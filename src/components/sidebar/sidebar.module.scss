@@ -15,9 +15,10 @@
 .sidebar {
   display: none;
   max-width: 250px;
+  // position: relative !important;
   @include media-breakpoint-up(lg) {
     display: block;
     position: fixed !important;
-    z-index: $zindex-fixed !important;
+    z-index: $zindex-fixed;
   }
 }

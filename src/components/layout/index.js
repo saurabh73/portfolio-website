@@ -25,7 +25,7 @@ const Layout = ({ children, page }) => {
   useEffect(() => {
     OverlayScrollbars(document.body, {
       nativeScrollbarsOverlaid: {
-        initialize: false,
+        initialize: true,
       },
       callbacks: {
         onInitialized: function () {

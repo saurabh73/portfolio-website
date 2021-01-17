@@ -17,27 +17,10 @@ module.exports = {
         transitionTime: 500
       }
     },
-    {
-      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-      options: {
-        devMode: true,
-      },
-    },
+    `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-postcss`,
-    // {
-    //   resolve: `gatsby-plugin-purgecss`,
-    //   options: {
-    //     printRejected: true,
-    //     printAll: true,
-    //     develop: true,
-    //     whitelist: ['readmore'],
-    //     whitelistPatterns: [/^hamburger.*/, /^overlay-menu.*/],
-    //     whitelistPatternsChildren: [/^hamburger.*/, /^overlay-menu.*/],
-    //     ignore: ['/react-overlay-menu.css', '/OverlayScrollbars.css', '/sidebar.module.scss', '/styles/_mixins.scss']
-    //   }
-    // },
     `gatsby-plugin-dark-mode`,
     {
       resolve: `gatsby-source-filesystem`,
