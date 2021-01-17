@@ -25,12 +25,19 @@ module.exports = {
     },
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
-    {
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        printRejected: true,
-      }
-    },
+    `gatsby-plugin-postcss`,
+    // {
+    //   resolve: `gatsby-plugin-purgecss`,
+    //   options: {
+    //     printRejected: true,
+    //     printAll: true,
+    //     develop: true,
+    //     whitelist: ['readmore'],
+    //     whitelistPatterns: [/^hamburger.*/, /^overlay-menu.*/],
+    //     whitelistPatternsChildren: [/^hamburger.*/, /^overlay-menu.*/],
+    //     ignore: ['/react-overlay-menu.css', '/OverlayScrollbars.css', '/sidebar.module.scss', '/styles/_mixins.scss']
+    //   }
+    // },
     `gatsby-plugin-dark-mode`,
     {
       resolve: `gatsby-source-filesystem`,

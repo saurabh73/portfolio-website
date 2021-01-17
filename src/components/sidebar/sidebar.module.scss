@@ -17,7 +17,7 @@
   max-width: 250px;
   @include media-breakpoint-up(lg) {
     display: block;
-    position: fixed;
-    z-index: $zindex-fixed;
+    position: fixed !important;
+    z-index: $zindex-fixed !important;
   }
 }
