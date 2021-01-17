@@ -16,6 +16,7 @@ import "overlayscrollbars/css/OverlayScrollbars.css";
 import OverlayScrollbars from "overlayscrollbars";
 import OverlayMenu from "react-overlay-menu";
 import PageMenu from "./../page-menu";
+import "./../../styles/style.scss";
 
 const Layout = ({ children, page }) => {
 

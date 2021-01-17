@@ -5,15 +5,15 @@
  */
 
 // You can delete this file if you're not using it
-import "./src/styles/style.scss";
-const transitionDelay = 10;
+/* import "./src/styles/style.scss"; */
+const transitionDelay = 100;
 
-export const onInitialClientRender = () => {
-  setTimeout(function () {
-    document.getElementsByTagName("body")[0].style.overflow = "auto";
-    document.getElementById("___loader").style.display = "none";
-  }, transitionDelay);
-};
+// export const onInitialClientRender = () => {
+//   setTimeout(function () {
+//     document.getElementsByTagName("body")[0].style.overflow = "auto";
+//     document.getElementById("___loader").style.display = "none";
+//   }, transitionDelay);
+// };
 
 export const shouldUpdateScroll = ({
   routerProps: { location },

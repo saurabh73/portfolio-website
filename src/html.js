@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import LoadingScreen from "./components/loader-screen";
-
+import "./styles/style.scss";
 export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
@@ -17,9 +17,9 @@ export default function HTML(props) {
       <body {...props.bodyAttributes} style={{ overflow: "hidden" }}>
         {props.preBodyComponents}
 
-        <div key={`loader`} id="___loader">
+        {/* <div key={`loader`} id="___loader">
           <LoadingScreen />
-        </div>
+        </div> */}
 
         <div
           key={`body`}

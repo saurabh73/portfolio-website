@@ -17,8 +17,20 @@ module.exports = {
         transitionTime: 500
       }
     },
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+      options: {
+        devMode: true,
+      },
+    },
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: true,
+      }
+    },
     `gatsby-plugin-dark-mode`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -35,8 +47,8 @@ module.exports = {
         description: 'Personal portfolio site of Saurabh Dutta',
         lang: 'en',
         start_url: `/`,
-        background_color: `#00000`,
-        theme_color: `#ffffff`,
+        "background-color": `#00000`,
+        "theme-color": `#ffffff`,
         display: `standalone`,
         icon: `src/assets/images/logo.png`,
         icons: [

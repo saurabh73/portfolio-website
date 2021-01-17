@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import Img from "gatsby-image";
 import ReadMore from "@crossfield/react-read-more";
-import { BsChevronCompactDown } from "react-icons/bs";
+// import { BsChevronCompactDown } from "react-icons/bs";
 
 const PortfolioCard = ({ portfolio }) => {
   return (
@@ -16,12 +16,12 @@ const PortfolioCard = ({ portfolio }) => {
       <ReadMore initialHeight={400} readMore={props => (
         <button onClick={props.onClick}>
           {props.open ? 'Read Less' : 'Read More'}
-          <span className="px-2">
+          {/* <span className="px-2">
             <BsChevronCompactDown style={{
               transform: `rotate( ${props.open ? '180deg' : '0deg'})`,
               transition: 'transform 0.25s',
             }} />
-          </span>
+          </span> */}
         </button>
       )}>
         <div className="card-body portfolio-body" style={{ paddingTop: "30px" }}>
@@ -34,15 +34,15 @@ const PortfolioCard = ({ portfolio }) => {
             </div>
             <div className="col-12 col-md-6 project-info">
               <span className="portfolio-summary">Project Summary</span>
-              <ul class="portfolio-aside-list">
+              <ul className="portfolio-aside-list">
                 <li>
-                  <span class="t-left">Role:</span>
-                  <span class="t-right text-primary">{portfolio.role}</span>
+                  <span className="t-left">Role:</span>
+                  <span className="t-right text-primary">{portfolio.role}</span>
                 </li>
                 <li>
-                  <span class="t-left">Skills:</span>
-                  <div class="t-right cate-link">
-                    {portfolio.tags.map((tag) => (<span className="badge">{tag}</span>))}
+                  <span className="t-left">Skills:</span>
+                  <div className="t-right cate-link">
+                    {portfolio.tags.map((tag, index) => (<span key={index} className="badge">{tag}</span>))}
                   </div>
                 </li>
               </ul>

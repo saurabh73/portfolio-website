@@ -3,8 +3,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import Style from "./sidebar.module.scss";
 import PropTypes from 'prop-types';
 import Img from "gatsby-image";
-import simpleIcons from 'simple-icons';
-import Icon from './../icon';
+// import simpleIcons from 'simple-icons';
+// import Icon from './../icon';
 
 const SidebarContent = ({ children }) => {
   const data = useStaticQuery(graphql`{
@@ -60,12 +60,12 @@ const SidebarContent = ({ children }) => {
               key={index}
               className="d-flex justify-content-center align-items-center"
               style={{ height: 32, width: 32 }}>
-              <Icon
+              {/* <Icon
                 className="social-icon"
                 size={20}
                 style={{}}
                 path={simpleIcons.get(item.network)["path"]}>
-              </Icon>
+              </Icon> */}
             </a>
           ))}
         </div>

@@ -1,4 +1,4 @@
-import { format, parseISO } from 'date-fns';
+import { format, parseISO } from 'date-fns/esm';
 const Helpers = {
   // Main wrapper for Fetch API
   httpRequest: (url, method, payload, headers) => {
