@@ -3,10 +3,20 @@ import { useStaticQuery, graphql } from "gatsby";
 import Style from "./sidebar.module.scss";
 import PropTypes from 'prop-types';
 import Img from "gatsby-image";
-// import simpleIcons from 'simple-icons';
-// import Icon from './../icon';
+// TODO: Optimize this
+import linkedin from 'simple-icons/icons/linkedin';
+import twitter from 'simple-icons/icons/twitter';
+import github from 'simple-icons/icons/github';
+import devTo from 'simple-icons/icons/dev-dot-to';
+import Icon from './../icon';
 
 const SidebarContent = ({ children }) => {
+  const icons = {
+    'linkedin': linkedin["path"],
+    'twitter': twitter["path"],
+    'github': github["path"],
+    'dev.to': devTo["path"]
+  }
   const data = useStaticQuery(graphql`{
     profile: sanityResume {
       id
@@ -60,12 +70,12 @@ const SidebarContent = ({ children }) => {
               key={index}
               className="d-flex justify-content-center align-items-center"
               style={{ height: 32, width: 32 }}>
-              {/* <Icon
+              <Icon
                 className="social-icon"
                 size={20}
                 style={{}}
-                path={simpleIcons.get(item.network)["path"]}>
-              </Icon> */}
+                path={icons[item.network]}>
+              </Icon>
             </a>
           ))}
         </div>

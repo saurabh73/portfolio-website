@@ -54,8 +54,8 @@ module.exports = {
         description: 'Personal portfolio site of Saurabh Dutta',
         lang: 'en',
         start_url: `/`,
-        "background-color": `#00000`,
-        "theme-color": `#ffffff`,
+        background_color: `#00000`,
+        theme_color: `#ffffff`,
         display: `standalone`,
         icon: `src/assets/images/logo.png`,
         icons: [

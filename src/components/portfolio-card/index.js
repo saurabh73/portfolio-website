@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import Img from "gatsby-image";
 import ReadMore from "@crossfield/react-read-more";
-// import { BsChevronCompactDown } from "react-icons/bs";
+import { BsChevronCompactDown } from "react-icons/bs";
 
 const PortfolioCard = ({ portfolio }) => {
   return (
@@ -16,12 +16,12 @@ const PortfolioCard = ({ portfolio }) => {
       <ReadMore initialHeight={400} readMore={props => (
         <button onClick={props.onClick}>
           {props.open ? 'Read Less' : 'Read More'}
-          {/* <span className="px-2">
+          <span className="px-2">
             <BsChevronCompactDown style={{
               transform: `rotate( ${props.open ? '180deg' : '0deg'})`,
               transition: 'transform 0.25s',
             }} />
-          </span> */}
+          </span>
         </button>
       )}>
         <div className="card-body portfolio-body" style={{ paddingTop: "30px" }}>
