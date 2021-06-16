@@ -36,6 +36,46 @@ p {
   margin-bottom: 0.5rem;
 }
 
+.ReactModal__Overlay {
+  z-index: $zindex-fixed + 100;
+}
+
+.ReactModal__Overlay {
+  left: calc(50vw - 560px);
+  overflow: none;
+  height: calc(100vh - 6rem);
+  width: 1120px;
+  align-content: center;
+  margin: 3rem auto;
+  padding: 0;
+  justify-content: space-around;
+}
+
+.ReactModal__Content {
+  padding: 0 !important;
+  inset: 0 !important;
+  overflow: hidden !important;
+}
+
+.modal-content {
+  height: 100%;
+}
+
+.modal-close {
+  position: absolute;
+  right: 61px;
+  top: 6rem;
+  border: none;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  color: black;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .title {
   position: relative;
   font-size: 1.8rem;
@@ -375,7 +415,7 @@ button:focus {
     }
   }
 
-  a.btn-resume {
+  .btn-resume {
     transition: all 300ms ease-in-out;
     background-color: themed("backgroundColor");
     box-shadow: 0px 15px 20px themed("shadowColor");
@@ -426,8 +466,7 @@ button:focus {
 
   .box {
     background-color: themed("contentBackgroundColor");
-    transition: box-shadow 0.3s ease-in-out,
-      background-color $theme-transition ease;
+    transition: box-shadow 0.3s ease-in-out, background-color $theme-transition ease;
   }
 
   header {
@@ -483,8 +522,7 @@ button:focus {
   }
 
   #___loader {
-    transition: background-color $theme-transition ease,
-      color $theme-transition ease;
+    transition: background-color $theme-transition ease, color $theme-transition ease;
 
     .loadingScreen {
       background-color: themed("backgroundColor");
