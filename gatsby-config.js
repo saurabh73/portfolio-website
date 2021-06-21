@@ -23,6 +23,13 @@ module.exports = {
     `gatsby-plugin-postcss`,
     `gatsby-plugin-dark-mode`,
     {
+      resolve: "gatsby-source-remote-file",
+      options: {
+        url: "https://resume.saurabhdutta.dev/saurabh-dutta.pdf",
+        name: "resume",
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `assets`,

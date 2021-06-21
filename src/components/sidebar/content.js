@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useStaticQuery, graphql } from "gatsby";
 import Style from "./sidebar.module.scss";
 import PropTypes from 'prop-types';
@@ -9,18 +9,9 @@ import twitter from 'simple-icons/icons/twitter';
 import github from 'simple-icons/icons/github';
 import devTo from 'simple-icons/icons/dev-dot-to';
 import Icon from './../icon';
-import ReactModal from "react-modal";
-// ReactModal.setAppElement('#___gatsby');
+
 const SidebarContent = ({ children }) => {
-  const [showModal, setShowModal] = useState(false);
 
-  const handleOpenModal = () => {
-    setShowModal(true);
-  }
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  }
   const icons = {
     'linkedin': linkedin["path"],
     'twitter': twitter["path"],
@@ -50,7 +41,7 @@ const SidebarContent = ({ children }) => {
         }
       }
     }
-    resume: file(name: {eq: "saurabh-dutta-resume"}, relativeDirectory: {in: "files"}) {
+    resume: file(name: {eq: "resume"}) {
       id
       publicURL
     }
@@ -91,18 +82,11 @@ const SidebarContent = ({ children }) => {
         </div>
       </div>
       <div className="resume-section mt-3">
-        <a className='only-mobile-block btn btn-resume hvr-underline-from-center btn-block p-3'
-          href={data.resume.publicURL} download>
+        <a className='btn btn-resume hvr-underline-from-center btn-block p-3'
+          href={data.resume.publicURL} download={`saurabh-dutta-${new Date().toISOString().slice(0, 10)}.pdf`}>
           Download Resume
         </a>
-        <button onClick={handleOpenModal} className='except-mobile-block btn btn-resume hvr-underline-from-center btn-block p-3'>
-          Download Resume
-        </button>
       </div>
-      <ReactModal isOpen={showModal}>
-        <iframe title="resume-frame" class="modal-content" src="https://resume-saurabh.netlify.app/"></iframe>
-        <button class="modal-close" onClick={handleCloseModal}>X</button>
-      </ReactModal>
     </>
   );
 };

@@ -13,6 +13,7 @@
     "gatsby-image": "^2.9.0",
     "gatsby-plugin-dark-mode": "^1.1.2",
     "gatsby-plugin-google-analytics": "^2.9.0",
+    "gatsby-source-remote-file": "^0.2.3",
     "gatsby-v2-plugin-page-transitions": "^1.0.0",
     "hamburgers": "^0.8.1",
     "hover.css": "^2.3.2",
@@ -43,6 +44,7 @@
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.18",
     "gatsby-source-filesystem": "^2.9.0",
     "gatsby-source-sanity": "^6.0.4",
+    "gatsby-transformer-remote-filesystem": "^1.0.0",
     "gatsby-transformer-sharp": "^2.10.0",
     "node-sass": "^4.14.1",
     "prettier": "^2.2.1",
@@ -57,10 +59,11 @@
   ],
   "license": "MIT",
   "scripts": {
+    "env": "export $(cat .env | xargs) && env",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "npm run env && npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
